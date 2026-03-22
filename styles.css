@@ -1691,21 +1691,11 @@ code {
 
 @page {
   size: A4;
-  margin: 7mm;
+  margin: 6mm;
 }
 
 @media print {
   :root {
-    --page-bg: #ffffff;
-    --page-bg-2: #ffffff;
-    --sheet: #ffffff;
-    --sheet-strong: #ffffff;
-    --sidebar: #15304e;
-    --sidebar-ink: #f5f8fb;
-    --ink: #111d2a;
-    --muted: #4f5b68;
-    --line: rgba(17, 29, 42, 0.12);
-    --accent-soft: rgba(15, 104, 216, 0.08);
     --shadow: none;
     --shadow-soft: none;
   }
@@ -1718,8 +1708,11 @@ code {
   }
 
   body {
-    background: #ffffff;
-    font-size: 10.25pt;
+    background:
+      radial-gradient(circle at top left, rgba(57, 198, 214, 0.16), transparent 24%),
+      radial-gradient(circle at 82% 10%, rgba(15, 104, 216, 0.22), transparent 28%),
+      linear-gradient(160deg, var(--page-bg), var(--page-bg-2) 48%, #0a1323 100%);
+    font-size: 10.35pt;
   }
 
   body::before,
@@ -1736,35 +1729,61 @@ code {
   }
 
   .resume-sheet {
+    grid-template-columns: 72mm 1fr;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--sheet);
     box-shadow: none;
-    border: 0;
-    border-radius: 0;
-    grid-template-columns: 69mm 1fr;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
-  .resume-sheet::before,
-  .sidebar::after,
-  .photo-frame::before {
-    display: none;
+  .resume-sheet::before {
+    display: block;
   }
 
   .sidebar {
-    padding: 18px;
-    background: #16314f;
+    padding: 20px 18px 22px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 18%),
+      repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.025) 0,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 28px
+      ),
+      var(--sidebar);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .sidebar::after {
+    display: block;
+    top: 20px;
+    bottom: 20px;
   }
 
   .content {
-    padding: 20px 22px;
+    padding: 22px 24px 24px;
   }
 
   .photo-frame {
-    border-radius: 18px;
+    border-radius: 26px;
     box-shadow: none;
-    background: #203d5f;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 35%),
+      linear-gradient(145deg, #183250, #0d1b2d);
+  }
+
+  .photo-frame::before {
+    display: block;
+    inset: 12px;
+    border-radius: 20px;
   }
 
   .profile-photo {
-    transform: none;
+    transform: scale(1.01);
   }
 
   .hero-block {
@@ -1772,20 +1791,24 @@ code {
   }
 
   .hero-block__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) 112px;
+    gap: 14px;
   }
 
   .hero-monogram {
-    display: none;
+    display: flex;
+    padding-top: 8px;
+    font-size: 58pt;
   }
 
   .hero-block__name {
-    font-size: 28pt;
-    max-width: none;
+    font-size: 28.5pt;
+    max-width: 9ch;
   }
 
   .hero-block__title {
-    font-size: 11.5pt;
+    max-width: 34ch;
+    font-size: 11.4pt;
     margin: 12px 0 10px;
   }
 
@@ -1794,22 +1817,32 @@ code {
   .entry-card__text,
   .entry-card__list,
   .compact-list {
-    line-height: 1.48;
+    line-height: 1.5;
   }
 
   .section-heading h3 {
-    font-size: 17.5pt;
+    font-size: 17.6pt;
   }
 
   .meta-band {
     gap: 8px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .meta-pill {
-    padding: 10px 12px 11px;
+    padding: 10px 11px 10px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(240, 246, 255, 0.92)),
+      var(--sheet-strong);
     box-shadow: none;
-    background: #f2f6fb;
+  }
+
+  .meta-pill__value {
+    font-size: 1rem;
+  }
+
+  .meta-pill__label {
+    line-height: 1.46;
   }
 
   .entry-card,
@@ -1825,8 +1858,22 @@ code {
 
   .entry-card,
   .skill-card {
-    padding: 14px 16px;
-    background: #ffffff;
+    padding: 14px 16px 16px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 253, 0.97)),
+      var(--sheet-strong);
+  }
+
+  .entry-card__title {
+    font-size: 1.06rem;
+  }
+
+  .entry-card__subtitle {
+    font-size: 0.92rem;
+  }
+
+  .entry-card__period {
+    font-size: 0.76rem;
   }
 
   .skills-grid {
