@@ -249,23 +249,37 @@ function teardownPrintLayout() {
   }
 }
 
-function createPrintPage(toolbarTemplate, sidebarTemplate) {
+function createPrintPage(kind, toolbarTemplate, sidebarTemplate) {
   const page = document.createElement("section");
-  page.className = "print-page";
+  page.className = `print-page print-page--${kind}`;
 
-  const toolbarWrap = document.createElement("div");
-  toolbarWrap.className = "print-page__toolbar";
-  toolbarWrap.appendChild(toolbarTemplate.cloneNode(true));
+  const surface = document.createElement("div");
+  surface.className = "print-page__surface";
 
-  const sidebarWrap = document.createElement("div");
-  sidebarWrap.className = "print-page__sidebar";
-  sidebarWrap.appendChild(sidebarTemplate.cloneNode(true));
+  if (kind === "cover") {
+    const toolbarWrap = document.createElement("div");
+    toolbarWrap.className = "print-page__toolbar";
+    toolbarWrap.appendChild(toolbarTemplate.cloneNode(true));
+    surface.appendChild(toolbarWrap);
+  }
+
+  const sheet = document.createElement("div");
+  sheet.className = `print-page__sheet print-page__sheet--${kind}`;
+
+  if (kind === "cover") {
+    const sidebarWrap = document.createElement("div");
+    sidebarWrap.className = "print-page__sidebar";
+    sidebarWrap.appendChild(sidebarTemplate.cloneNode(true));
+    sheet.appendChild(sidebarWrap);
+  }
 
   const content = document.createElement("div");
-  content.className = "print-page__content";
+  content.className = `print-page__content print-page__content--${kind}`;
+  sheet.appendChild(content);
 
-  page.append(toolbarWrap, sidebarWrap, content);
-  return { page, content };
+  surface.appendChild(sheet);
+  page.appendChild(surface);
+  return { page, content, kind };
 }
 
 function createSectionShell(sectionClassName, headingTemplate, listClassName) {
@@ -368,14 +382,14 @@ function buildPrintLayout() {
   document.body.appendChild(root);
 
   const pages = [];
-  const createPage = () => {
-    const page = createPrintPage(toolbarTemplate, sidebarTemplate);
+  const createPage = (kind = "flow") => {
+    const page = createPrintPage(kind, toolbarTemplate, sidebarTemplate);
     pages.push(page);
     root.appendChild(page.page);
     return page;
   };
 
-  let currentPage = createPage();
+  let currentPage = createPage("cover");
 
   blocks.forEach((block) => {
     if (block.type === "single") {
@@ -384,7 +398,7 @@ function buildPrintLayout() {
 
       if (contentOverflows(currentPage.content) && currentPage.content.childElementCount > 1) {
         node.remove();
-        currentPage = createPage();
+        currentPage = createPage("flow");
         currentPage.content.appendChild(node);
       }
 
@@ -420,7 +434,7 @@ function buildPrintLayout() {
         shell.section.remove();
       }
 
-      currentPage = createPage();
+      currentPage = createPage("flow");
       shell = createSectionShell(
         block.sectionClassName,
         block.headingTemplate,
@@ -448,7 +462,7 @@ function buildPdfFileName() {
   return `${parts.join(" - ").replace(/[\\/:*?"<>|]+/g, "").trim() || "resume"}.pdf`;
 }
 
-async function waitForPrintAssets(root) {
+async function waitForFonts() {
   if (document.fonts?.ready) {
     try {
       await document.fonts.ready;
@@ -456,24 +470,46 @@ async function waitForPrintAssets(root) {
       // Ignore font readiness issues.
     }
   }
+}
 
+async function waitForImages(root) {
   const images = [...root.querySelectorAll("img")];
   await Promise.all(
     images.map(
-      (image) =>
-        new Promise((resolve) => {
-          if (image.complete) {
-            resolve();
-            return;
-          }
+      async (image) => {
+        if (!image.complete) {
+          await new Promise((resolve) => {
+            image.addEventListener("load", resolve, { once: true });
+            image.addEventListener("error", resolve, { once: true });
+          });
+        }
 
-          image.addEventListener("load", resolve, { once: true });
-          image.addEventListener("error", resolve, { once: true });
-        })
+        if (typeof image.decode === "function") {
+          try {
+            await image.decode();
+          } catch {
+            // Ignore decode failures and continue with the loaded bitmap.
+          }
+        }
+      }
     )
   );
+}
 
+async function settleLayout() {
   await new Promise((resolve) => window.requestAnimationFrame(() => window.requestAnimationFrame(resolve)));
+}
+
+async function waitForPrintAssets(root) {
+  await waitForFonts();
+  await waitForImages(root);
+  await settleLayout();
+}
+
+async function waitForSourceAssets() {
+  await waitForFonts();
+  await waitForImages(document);
+  await settleLayout();
 }
 
 async function loadPdfLibraries() {
@@ -491,12 +527,6 @@ async function loadPdfLibraries() {
 }
 
 async function exportResumePdf() {
-  const root = buildPrintLayout();
-  if (!root) {
-    window.print();
-    return;
-  }
-
   const button = byId("downloadPdf");
   const originalText = button?.textContent || "";
   const translation = getCurrentTranslation();
@@ -507,6 +537,14 @@ async function exportResumePdf() {
   }
 
   try {
+    await waitForSourceAssets();
+    const root = buildPrintLayout();
+
+    if (!root) {
+      window.print();
+      return;
+    }
+
     await waitForPrintAssets(root);
     const { html2canvas, jsPDF } = await loadPdfLibraries();
 
@@ -754,7 +792,7 @@ function init() {
   applyLanguage(getStoredLanguage());
 
   if (params.get("printLayout") === "1") {
-    buildPrintLayout();
+    void waitForSourceAssets().then(buildPrintLayout);
   }
 }
 

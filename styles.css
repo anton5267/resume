@@ -759,6 +759,7 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
   width: 210mm;
   height: 297mm;
   max-height: 297mm;
+  padding: 8mm;
   box-sizing: border-box;
   overflow: hidden;
   color: var(--ink);
@@ -777,45 +778,54 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
   page-break-after: auto;
 }
 
-.print-page::before {
-  content: "";
-  position: absolute;
-  top: 40mm;
-  left: 10mm;
-  right: 10mm;
-  bottom: 10mm;
-  border-radius: 12mm;
+.print-page__surface {
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+  height: 100%;
+}
+
+.print-page__toolbar {
+  flex: 0 0 auto;
+}
+
+.print-page__sheet {
+  min-height: 0;
+  flex: 1 1 auto;
+  border-radius: 10mm;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 253, 0.98)),
     var(--sheet-strong);
+  overflow: hidden;
 }
 
-.print-page__toolbar {
-  position: absolute;
-  top: 10mm;
-  left: 10mm;
-  right: 10mm;
-  z-index: 3;
+.print-page__sheet--cover {
+  display: grid;
+  grid-template-columns: 48mm minmax(0, 1fr);
+}
+
+.print-page__sheet--flow {
+  padding: 10mm 12mm 12mm;
 }
 
 .print-page__sidebar {
-  position: absolute;
-  top: 40mm;
-  left: 10mm;
-  bottom: 10mm;
-  width: 51mm;
-  z-index: 2;
+  min-width: 0;
+  min-height: 0;
 }
 
 .print-page__content {
-  position: absolute;
-  top: 52mm;
-  left: 66mm;
-  right: 14mm;
-  bottom: 14mm;
-  z-index: 2;
   overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+}
+
+.print-page__content--cover {
+  padding: 12mm 14mm 14mm;
+}
+
+.print-page__content--flow {
+  height: 100%;
 }
 
 .print-page .toolbar {
@@ -825,9 +835,9 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
   grid-template-columns: minmax(0, 1fr) 60mm;
   gap: 4mm 8mm;
   align-items: start;
-  min-height: 25mm;
+  min-height: 21mm;
   margin: 0;
-  padding: 5mm 6mm;
+  padding: 4mm 5mm;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10mm;
   background: linear-gradient(180deg, rgba(19, 38, 63, 0.96), rgba(12, 27, 47, 0.92));
@@ -837,7 +847,7 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 
 .print-page .toolbar__left {
   display: grid;
-  gap: 4mm;
+  gap: 3mm;
   align-content: start;
 }
 
@@ -846,15 +856,15 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .toolbar__eyebrow {
-  margin: 0 0 2mm;
-  font-size: 6.5pt;
+  margin: 0 0 1.4mm;
+  font-size: 6pt;
   letter-spacing: 0.2em;
   color: rgba(217, 231, 247, 0.84);
 }
 
 .print-page .toolbar__title {
   margin: 0;
-  font-size: 14pt;
+  font-size: 12.8pt;
   line-height: 1.1;
   color: #f8fbff;
 }
@@ -867,14 +877,14 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .nav-link {
-  min-height: 10.5mm;
-  padding: 0 4.2mm;
-  font-size: 7.7pt;
+  min-height: 9mm;
+  padding: 0 3.6mm;
+  font-size: 7.1pt;
 }
 
 .print-page .toolbar__actions {
   width: 60mm;
-  gap: 2.6mm;
+  gap: 2mm;
   justify-content: flex-end;
   flex-wrap: wrap;
   align-items: center;
@@ -886,16 +896,16 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .lang-switch__button {
-  min-width: 10.5mm;
-  min-height: 10.5mm;
-  padding: 0 3.2mm;
-  font-size: 7.2pt;
+  min-width: 9mm;
+  min-height: 9mm;
+  padding: 0 2.6mm;
+  font-size: 6.7pt;
 }
 
 .print-page .button {
-  min-height: 11.5mm;
-  padding: 0 5mm;
-  font-size: 8pt;
+  min-height: 10mm;
+  padding: 0 4.2mm;
+  font-size: 7.4pt;
   box-shadow: none;
 }
 
@@ -906,8 +916,8 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 .print-page .sidebar {
   position: static;
   height: 100%;
-  padding: 6mm 5mm 6.5mm;
-  border-radius: 12mm 0 0 12mm;
+  padding: 5mm 4.2mm 5.5mm;
+  border-radius: 10mm 0 0 10mm;
   overflow: hidden;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 18%),
@@ -930,11 +940,11 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .photo-card {
-  margin-bottom: 5.5mm;
+  margin-bottom: 4mm;
 }
 
 .print-page .photo-frame {
-  border-radius: 8mm;
+  border-radius: 6.8mm;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: none;
   background:
@@ -943,8 +953,8 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .photo-frame::before {
-  inset: 3mm;
-  border-radius: 5.5mm;
+  inset: 2.4mm;
+  border-radius: 4.6mm;
 }
 
 .print-page .profile-photo {
@@ -952,22 +962,22 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .photo-fallback {
-  font-size: 30pt;
+  font-size: 26pt;
 }
 
 .print-page .sidebar__role {
-  margin: 3mm 0 0;
-  font-size: 8.8pt;
-  line-height: 1.55;
+  margin: 2mm 0 0;
+  font-size: 8.2pt;
+  line-height: 1.45;
 }
 
 .print-page .sidebar-section + .sidebar-section {
-  margin-top: 4mm;
-  padding-top: 4mm;
+  margin-top: 3.2mm;
+  padding-top: 3.2mm;
 }
 
 .print-page .contact-list {
-  gap: 3.2mm;
+  gap: 2.4mm;
 }
 
 .print-page .contact-item {
@@ -975,13 +985,13 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .contact-item dt {
-  font-size: 6.1pt;
+  font-size: 5.8pt;
   letter-spacing: 0.18em;
 }
 
 .print-page .contact-item dd {
-  font-size: 8.1pt;
-  line-height: 1.34;
+  font-size: 7.6pt;
+  line-height: 1.28;
 }
 
 .print-page .chip-list {
@@ -989,68 +999,68 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .chip {
-  min-height: 7mm;
-  padding: 0 2.8mm;
-  font-size: 7pt;
+  min-height: 6.2mm;
+  padding: 0 2.2mm;
+  font-size: 6.5pt;
 }
 
 .print-page .compact-list {
   padding-left: 4.2mm;
-  gap: 1.8mm;
-  font-size: 8pt;
-  line-height: 1.42;
+  gap: 1.4mm;
+  font-size: 7.4pt;
+  line-height: 1.34;
 }
 
 .print-page .hero-block {
   position: relative;
-  padding: 0 0 5.5mm;
+  padding: 0 0 4mm;
   border-bottom: 1px solid rgba(16, 32, 51, 0.11);
 }
 
 .print-page .hero-block__grid {
   grid-template-columns: minmax(0, 1fr) 28mm;
-  gap: 4mm;
+  gap: 3mm;
 }
 
 .print-page .hero-monogram {
-  padding-top: 2mm;
-  font-size: 42pt;
+  padding-top: 1mm;
+  font-size: 34pt;
   color: rgba(15, 104, 216, 0.13);
 }
 
 .print-page .hero-block__name {
   max-width: 8ch;
-  font-size: 29.5pt;
+  font-size: 26.5pt;
   line-height: 0.88;
 }
 
 .print-page .hero-block__name--small {
   max-width: 10ch;
-  font-size: 24pt;
+  font-size: 22pt;
 }
 
 .print-page .hero-block__title {
   max-width: 30ch;
-  margin: 3mm 0;
-  font-size: 11pt;
-  line-height: 1.45;
+  margin: 2.2mm 0;
+  font-size: 9.8pt;
+  line-height: 1.36;
 }
 
 .print-page .hero-block__summary,
 .print-page .lead-copy {
-  font-size: 9.1pt;
-  line-height: 1.74;
+  font-size: 8.3pt;
+  line-height: 1.58;
 }
 
 .print-page .meta-band {
-  gap: 3mm;
-  margin-top: 5mm;
+  gap: 2mm;
+  margin-top: 3.6mm;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .print-page .meta-pill {
-  padding: 4mm 3.4mm 3.4mm;
-  border-radius: 5mm;
+  padding: 3.2mm 2.8mm 2.8mm;
+  border-radius: 4.2mm;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 246, 255, 0.94)),
     var(--sheet-strong);
@@ -1059,56 +1069,60 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 }
 
 .print-page .meta-pill::before {
-  left: 3.4mm;
-  width: 12mm;
+  left: 2.8mm;
+  width: 10mm;
   height: 1.2mm;
 }
 
 .print-page .meta-pill__value {
-  margin-bottom: 1mm;
-  font-size: 9.4pt;
+  margin-bottom: 0.6mm;
+  font-size: 8.6pt;
 }
 
 .print-page .meta-pill__label {
-  font-size: 6.8pt;
-  line-height: 1.36;
+  font-size: 6.2pt;
+  line-height: 1.24;
 }
 
 .print-page .content-section {
-  padding-top: 5.5mm;
+  padding-top: 4.2mm;
 }
 
 .print-page .content-section + .content-section {
   border-top: 1px solid rgba(16, 32, 51, 0.11);
 }
 
+.print-page__content--flow > .content-section:first-child {
+  padding-top: 0;
+}
+
 .print-page .section-heading {
-  gap: 1.6mm;
-  margin-bottom: 3.5mm;
+  gap: 1.2mm;
+  margin-bottom: 2.4mm;
 }
 
 .print-page .section-label,
 .print-page .hero-block__eyebrow {
-  margin: 0 0 1mm;
-  font-size: 6.6pt;
+  margin: 0 0 0.8mm;
+  font-size: 6pt;
   letter-spacing: 0.2em;
 }
 
 .print-page .section-heading h3 {
   max-width: 22ch;
-  font-size: 18.5pt;
+  font-size: 16.5pt;
 }
 
 .print-page .entry-list,
 .print-page .skills-grid {
   display: grid;
-  gap: 4mm;
+  gap: 3mm;
 }
 
 .print-page .entry-card,
 .print-page .skill-card {
-  padding: 5mm 5.5mm 5.5mm;
-  border-radius: 5.5mm;
+  padding: 4mm 4.6mm 4.6mm;
+  border-radius: 4.8mm;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 253, 0.97)),
     var(--sheet-strong);
@@ -1118,66 +1132,66 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 
 .print-page .entry-card::before,
 .print-page .skill-card::before {
-  top: 4mm;
-  bottom: 4mm;
-  width: 1.2mm;
+  top: 3.2mm;
+  bottom: 3.2mm;
+  width: 1mm;
 }
 
 .print-page .entry-card__top {
-  margin-bottom: 2.5mm;
-  gap: 3mm;
+  margin-bottom: 1.8mm;
+  gap: 2.2mm;
 }
 
 .print-page .entry-card__title {
-  font-size: 10.2pt;
+  font-size: 9.4pt;
 }
 
 .print-page .entry-card__subtitle {
-  font-size: 8.5pt;
-  line-height: 1.35;
+  font-size: 7.9pt;
+  line-height: 1.26;
 }
 
 .print-page .entry-card__period {
-  font-size: 6.8pt;
+  font-size: 6.2pt;
 }
 
 .print-page .entry-card__text {
-  font-size: 8.85pt;
-  line-height: 1.66;
+  font-size: 8.05pt;
+  line-height: 1.46;
 }
 
 .print-page .entry-card__list {
-  margin-top: 2.8mm;
-  padding-left: 4.4mm;
-  gap: 1.8mm;
-  font-size: 8.4pt;
-  line-height: 1.5;
+  margin-top: 2.2mm;
+  padding-left: 4mm;
+  gap: 1.2mm;
+  font-size: 7.7pt;
+  line-height: 1.34;
 }
 
 .print-page .tag-list {
-  gap: 2mm;
-  margin-top: 3mm;
+  gap: 1.6mm;
+  margin-top: 2.2mm;
 }
 
 .print-page .tag {
-  min-height: 7mm;
-  padding: 0 2.8mm;
-  font-size: 6.9pt;
+  min-height: 6mm;
+  padding: 0 2.2mm;
+  font-size: 6.3pt;
 }
 
 .print-page .entry-link {
-  margin-top: 3mm;
-  font-size: 8.5pt;
+  margin-top: 2.2mm;
+  font-size: 7.8pt;
 }
 
 .print-page .skills-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 4mm;
+  gap: 3mm;
 }
 
 .print-page .skill-card h4 {
-  margin: 0 0 3mm;
-  font-size: 9.6pt;
+  margin: 0 0 2.2mm;
+  font-size: 8.9pt;
 }
 
 .short-print-summary {
@@ -2204,12 +2218,13 @@ code {
     page: resume-page;
     position: relative;
     color: var(--ink);
-    background: transparent;
+    background: #ffffff;
   }
 
-  body.resume-page.has-print-layout::before,
-  body.resume-page.has-print-layout::after {
+  body.resume-page::before,
+  body.resume-page::after {
     display: none !important;
+    content: none !important;
   }
 
   body.resume-page.has-print-layout .site-frame {
@@ -2220,452 +2235,23 @@ code {
     display: block !important;
   }
 
-  body.resume-page::before {
-    content: "";
-    position: fixed;
-    top: -52mm;
-    right: -10mm;
-    bottom: -12mm;
-    left: -10mm;
-    display: block;
-    background:
-      radial-gradient(circle at 12% 18%, rgba(57, 198, 214, 0.18), transparent 20%),
-      radial-gradient(circle at 86% 8%, rgba(15, 104, 216, 0.22), transparent 22%),
-      linear-gradient(160deg, var(--page-bg), var(--page-bg-2) 48%, #0a1323 100%);
-    z-index: -6;
-  }
-
-  body.resume-page::after {
-    content: "";
-    position: fixed;
-    top: -12mm;
-    left: 0;
-    right: 0;
-    bottom: -2mm;
-    display: block;
-    border-radius: 12mm;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 253, 0.98)),
-      var(--sheet-strong);
-    z-index: -5;
-  }
-
-  body.resume-page .site-frame {
-    position: static;
-  }
-
-  body.resume-page .toolbar.no-print {
-    position: fixed;
-    top: -42mm;
-    left: 0;
-    right: 0;
-    z-index: 30;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 60mm;
-    gap: 4mm 8mm;
-    align-items: start;
-    min-height: 25mm;
-    margin: 0;
-    padding: 5mm 6mm;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10mm;
-    background: linear-gradient(180deg, rgba(19, 38, 63, 0.96), rgba(12, 27, 47, 0.92));
-    box-shadow: none;
-    backdrop-filter: none;
-  }
-
-  body.resume-page .toolbar__left {
-    display: grid;
-    gap: 4mm;
-    align-content: start;
-  }
-
-  body.resume-page .toolbar__meta {
-    gap: 0;
-  }
-
-  body.resume-page .toolbar__eyebrow {
-    margin: 0 0 2mm;
-    font-size: 6.5pt;
-    letter-spacing: 0.2em;
-    color: rgba(217, 231, 247, 0.84);
-  }
-
-  body.resume-page .toolbar__title {
-    font-size: 14pt;
-    line-height: 1.1;
-    color: #f8fbff;
-  }
-
-  body.resume-page .nav-links {
-    gap: 1.4mm;
-    padding: 1.2mm;
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-
-  body.resume-page .nav-link {
-    min-height: 10.5mm;
-    padding: 0 4.2mm;
-    font-size: 7.7pt;
-  }
-
-  body.resume-page .toolbar__actions {
-    width: 60mm;
-    gap: 2.6mm;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  body.resume-page .lang-switch {
-    gap: 1.2mm;
-    padding: 1.2mm;
-  }
-
-  body.resume-page .lang-switch__button {
-    min-width: 10.5mm;
-    min-height: 10.5mm;
-    padding: 0 3.2mm;
-    font-size: 7.2pt;
-  }
-
-  body.resume-page .button {
-    min-height: 11.5mm;
-    padding: 0 5mm;
-    font-size: 8pt;
+  body.resume-page.has-print-layout .print-page,
+  body.resume-page.has-print-layout .print-page__sheet,
+  body.resume-page.has-print-layout .print-page .toolbar,
+  body.resume-page.has-print-layout .print-page .sidebar,
+  body.resume-page.has-print-layout .print-page .entry-card,
+  body.resume-page.has-print-layout .print-page .skill-card,
+  body.resume-page.has-print-layout .print-page .meta-pill {
     box-shadow: none;
   }
 
-  body.resume-page .button--primary {
-    width: 100%;
-  }
-
-  body.resume-page .resume-sheet {
-    position: static;
-    display: block;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    overflow: visible;
-    box-shadow: none;
-  }
-
-  body.resume-page .resume-sheet::before {
-    display: none;
-  }
-
-  body.resume-page .sidebar {
-    position: fixed;
-    top: -12mm;
-    left: 0;
-    bottom: -2mm;
-    z-index: 25;
-    width: 51mm;
-    padding: 6mm 5mm 6.5mm;
-    border-radius: 12mm 0 0 12mm;
-    overflow: hidden;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 18%),
-      repeating-linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.025) 0,
-        rgba(255, 255, 255, 0.025) 1px,
-        transparent 1px,
-        transparent 24px
-      ),
-      var(--sidebar);
-    color: var(--sidebar-ink);
-    box-shadow: none;
-  }
-
-  body.resume-page .sidebar::after {
-    display: block;
-    top: 6mm;
-    bottom: 6mm;
-  }
-
-  body.resume-page .photo-card {
-    margin-bottom: 5.5mm;
-  }
-
-  body.resume-page .photo-frame {
-    border-radius: 8mm;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: none;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 35%),
-      linear-gradient(145deg, #183250, #0d1b2d);
-  }
-
-  body.resume-page .photo-frame::before {
-    display: block;
-    inset: 3mm;
-    border-radius: 5.5mm;
-  }
-
-  body.resume-page .profile-photo {
-    transform: scale(1.02);
-  }
-
-  body.resume-page .photo-fallback {
-    font-size: 30pt;
-  }
-
-  body.resume-page .sidebar__role {
-    margin: 3mm 0 0;
-    font-size: 8.8pt;
-    line-height: 1.55;
-  }
-
-  body.resume-page .sidebar-section + .sidebar-section {
-    margin-top: 4mm;
-    padding-top: 4mm;
-  }
-
-  body.resume-page .section-label {
-    color: rgba(77, 187, 255, 0.88);
-  }
-
-  body.resume-page .contact-list {
-    gap: 3.2mm;
-  }
-
-  body.resume-page .contact-item {
-    gap: 1mm;
-  }
-
-  body.resume-page .contact-item dt {
-    font-size: 6.1pt;
-    letter-spacing: 0.18em;
-  }
-
-  body.resume-page .contact-item dd {
-    font-size: 8.1pt;
-    line-height: 1.34;
-  }
-
-  body.resume-page .chip-list {
-    gap: 2mm;
-  }
-
-  body.resume-page .chip {
-    min-height: 7mm;
-    padding: 0 2.8mm;
-    font-size: 7pt;
-  }
-
-  body.resume-page .compact-list {
-    padding-left: 4.2mm;
-    gap: 1.8mm;
-    font-size: 8pt;
-    line-height: 1.42;
-  }
-
-  body.resume-page .content {
-    position: relative;
-    z-index: 5;
-    margin-left: 56mm;
-    padding: 0 0 0 4mm;
-    background: transparent;
-  }
-
-  body.resume-page .hero-block {
-    padding: 0 0 5.5mm;
-    border-bottom: 1px solid rgba(16, 32, 51, 0.11);
-  }
-
-  body.resume-page .hero-block__grid {
-    grid-template-columns: minmax(0, 1fr) 28mm;
-    gap: 4mm;
-  }
-
-  body.resume-page .hero-monogram {
-    display: flex;
-    padding-top: 2mm;
-    font-size: 42pt;
-    color: rgba(15, 104, 216, 0.13);
-  }
-
-  body.resume-page .hero-block__name {
-    max-width: 8ch;
-    font-size: 29.5pt;
-    line-height: 0.88;
-  }
-
-  body.resume-page .hero-block__name--small {
-    max-width: 10ch;
-    font-size: 24pt;
-  }
-
-  body.resume-page .hero-block__title {
-    max-width: 30ch;
-    margin: 3mm 0;
-    font-size: 11pt;
-    line-height: 1.45;
-  }
-
-  body.resume-page .hero-block__summary,
-  body.resume-page .lead-copy {
-    font-size: 9.1pt;
-    line-height: 1.74;
-  }
-
-  body.resume-page .meta-band {
-    gap: 3mm;
-    margin-top: 5mm;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  body.resume-page .meta-pill {
-    padding: 4mm 3.4mm 3.4mm;
-    border-radius: 5mm;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 246, 255, 0.94)),
-      var(--sheet-strong);
-    border: 1px solid rgba(15, 104, 216, 0.12);
-    box-shadow: none;
-  }
-
-  body.resume-page .meta-pill::before {
-    left: 3.4mm;
-    width: 12mm;
-    height: 1.2mm;
-  }
-
-  body.resume-page .meta-pill__value {
-    margin-bottom: 1mm;
-    font-size: 9.4pt;
-  }
-
-  body.resume-page .meta-pill__label {
-    font-size: 6.8pt;
-    line-height: 1.36;
-  }
-
-  body.resume-page .content-section {
-    padding-top: 5.5mm;
-  }
-
-  body.resume-page .content-section + .content-section {
-    border-top: 1px solid rgba(16, 32, 51, 0.11);
-  }
-
-  body.resume-page .section-heading {
-    gap: 1.6mm;
-    margin-bottom: 3.5mm;
-    break-after: avoid;
-    page-break-after: avoid;
-  }
-
-  body.resume-page .section-label,
-  body.resume-page .hero-block__eyebrow {
-    margin: 0 0 1mm;
-    font-size: 6.6pt;
-    letter-spacing: 0.2em;
-  }
-
-  body.resume-page .section-heading h3 {
-    max-width: 22ch;
-    font-size: 18.5pt;
-  }
-
-  body.resume-page p,
-  body.resume-page li {
-    orphans: 3;
-    widows: 3;
-  }
-
-  body.resume-page .entry-list,
-  body.resume-page .skills-grid {
-    gap: 4mm;
-  }
-
-  body.resume-page .hero-block,
-  body.resume-page .photo-card,
-  body.resume-page .sidebar-section,
-  body.resume-page .entry-card,
-  body.resume-page .skill-card,
-  body.resume-page .section-heading,
-  body.resume-page .entry-card__top {
+  body.resume-page.has-print-layout .print-page .content-section,
+  body.resume-page.has-print-layout .print-page .entry-card,
+  body.resume-page.has-print-layout .print-page .skill-card,
+  body.resume-page.has-print-layout .print-page .section-heading,
+  body.resume-page.has-print-layout .print-page .entry-card__top {
     break-inside: avoid;
     page-break-inside: avoid;
-  }
-
-  body.resume-page .entry-card,
-  body.resume-page .skill-card {
-    padding: 5mm 5.5mm 5.5mm;
-    border-radius: 5.5mm;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 253, 0.97)),
-      var(--sheet-strong);
-    border: 1px solid rgba(16, 32, 51, 0.07);
-    box-shadow: none;
-  }
-
-  body.resume-page .entry-card::before,
-  body.resume-page .skill-card::before {
-    top: 4mm;
-    bottom: 4mm;
-    width: 1.2mm;
-  }
-
-  body.resume-page .entry-card__top {
-    margin-bottom: 2.5mm;
-    gap: 3mm;
-  }
-
-  body.resume-page .entry-card__title {
-    font-size: 10.2pt;
-  }
-
-  body.resume-page .entry-card__subtitle {
-    font-size: 8.5pt;
-    line-height: 1.35;
-  }
-
-  body.resume-page .entry-card__period {
-    font-size: 6.8pt;
-  }
-
-  body.resume-page .entry-card__text {
-    font-size: 8.85pt;
-    line-height: 1.66;
-  }
-
-  body.resume-page .entry-card__list {
-    margin-top: 2.8mm;
-    padding-left: 4.4mm;
-    gap: 1.8mm;
-    font-size: 8.4pt;
-    line-height: 1.5;
-  }
-
-  body.resume-page .tag-list {
-    gap: 2mm;
-    margin-top: 3mm;
-  }
-
-  body.resume-page .tag {
-    min-height: 7mm;
-    padding: 0 2.8mm;
-    font-size: 6.9pt;
-  }
-
-  body.resume-page .entry-link {
-    margin-top: 3mm;
-    font-size: 8.5pt;
-  }
-
-  body.resume-page .skills-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4mm;
-  }
-
-  body.resume-page .skill-card h4 {
-    margin: 0 0 3mm;
-    font-size: 9.6pt;
   }
 
   body.short-cv-page {
