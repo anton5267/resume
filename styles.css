@@ -845,6 +845,21 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
   backdrop-filter: none;
 }
 
+.print-page .toolbar,
+.print-page .sidebar,
+.print-page .hero-block,
+.print-page .content-section {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.print-page *,
+.print-page *::before,
+.print-page *::after {
+  transition: none !important;
+}
+
 .print-page .toolbar__left {
   display: grid;
   gap: 3mm;
@@ -1096,6 +1111,15 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
   padding-top: 0;
 }
 
+.print-page__content--balanced {
+  display: flex;
+  flex-direction: column;
+}
+
+.print-page__content--balanced > .content-section--skills {
+  flex: 1 1 auto;
+}
+
 .print-page .section-heading {
   gap: 1.2mm;
   margin-bottom: 2.4mm;
@@ -1187,6 +1211,27 @@ body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
 .print-page .skills-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3mm;
+}
+
+.print-page .content-section--skills {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.print-page .content-section--skills .skills-grid {
+  min-height: 0;
+}
+
+.print-page__content--balanced > .content-section--skills .skills-grid {
+  flex: 1 1 auto;
+  align-content: stretch;
+  grid-auto-rows: 1fr;
+  gap: 4mm;
+}
+
+.print-page__content--balanced > .content-section--skills .skill-card {
+  height: 100%;
 }
 
 .print-page .skill-card h4 {

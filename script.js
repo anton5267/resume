@@ -237,7 +237,25 @@ function sanitizeClone(node) {
     element.removeAttribute("aria-pressed");
   });
 
+  clone.querySelectorAll("[disabled]").forEach((element) => {
+    element.removeAttribute("disabled");
+  });
+
+  clone.querySelectorAll("[aria-busy]").forEach((element) => {
+    element.removeAttribute("aria-busy");
+  });
+
   return clone;
+}
+
+function preparePrintToolbar(toolbarTemplate) {
+  const translation = getCurrentTranslation();
+  const primaryButton = toolbarTemplate.querySelector(".button--primary");
+
+  if (primaryButton) {
+    primaryButton.textContent = translation.meta?.pdfButton || primaryButton.textContent;
+    primaryButton.removeAttribute("disabled");
+  }
 }
 
 function teardownPrintLayout() {
@@ -338,9 +356,15 @@ function collectPrintBlocks() {
 
       if (entryList || skillsGrid) {
         const list = entryList || skillsGrid;
+        const sectionClassNames = [child.className];
+
+        if (skillsGrid) {
+          sectionClassNames.push("content-section--skills");
+        }
+
         return {
           type: "collection",
-          sectionClassName: child.className,
+          sectionClassName: sectionClassNames.join(" "),
           listClassName: list.className,
           headingTemplate: heading ? sanitizeClone(heading) : null,
           itemTemplates: [...list.children].map((item) => sanitizeClone(item)),
@@ -374,6 +398,7 @@ function buildPrintLayout() {
 
   const toolbarTemplate = sanitizeClone(toolbarSource);
   const sidebarTemplate = sanitizeClone(sidebarSource);
+  preparePrintToolbar(toolbarTemplate);
   const blocks = collectPrintBlocks();
 
   const root = document.createElement("div");
@@ -448,6 +473,7 @@ function buildPrintLayout() {
   root.classList.remove("is-measuring");
   printLayoutRoot = root;
   document.body.classList.add("has-print-layout");
+  balanceTrailingPrintPage(pages);
   return printLayoutRoot;
 }
 
@@ -457,9 +483,30 @@ function getCurrentTranslation() {
 }
 
 function buildPdfFileName() {
-  const translation = getCurrentTranslation();
-  const parts = [translation.basics?.name || "resume", translation.basics?.title || "cv"];
-  return `${parts.join(" - ").replace(/[\\/:*?"<>|]+/g, "").trim() || "resume"}.pdf`;
+  const language = getStoredLanguage();
+  const normalizedLanguage = language === "uk" ? "UA" : language.toUpperCase();
+  return `Anton_Lyshtva_Resume_${normalizedLanguage}.pdf`;
+}
+
+function balanceTrailingPrintPage(pages) {
+  const lastPage = pages[pages.length - 1];
+  if (!lastPage || lastPage.kind !== "flow") {
+    return;
+  }
+
+  const contentRect = lastPage.content.getBoundingClientRect();
+  const trailingSection = lastPage.content.lastElementChild;
+  if (!trailingSection?.classList.contains("content-section--skills")) {
+    return;
+  }
+
+  const trailingRect = trailingSection.getBoundingClientRect();
+  const remainingSpace = contentRect.bottom - trailingRect.bottom;
+  if (remainingSpace < 120) {
+    return;
+  }
+
+  lastPage.content.classList.add("print-page__content--balanced");
 }
 
 async function waitForFonts() {
@@ -526,6 +573,39 @@ async function loadPdfLibraries() {
   return pdfLibrariesPromise;
 }
 
+async function renderPrintPagesToCanvas(root, html2canvas) {
+  const pages = [...root.querySelectorAll(".print-page")];
+  const canvases = [];
+
+  for (const pageNode of pages) {
+    const canvas = await html2canvas(pageNode, {
+      scale: 2,
+      backgroundColor: "#081221",
+      useCORS: true,
+    });
+
+    canvases.push(canvas);
+  }
+
+  return canvases;
+}
+
+function createPdfReadyCanvas(sourceCanvas) {
+  const canvas = document.createElement("canvas");
+  canvas.width = sourceCanvas.width;
+  canvas.height = sourceCanvas.height;
+
+  const context = canvas.getContext("2d", { alpha: false });
+  if (!context) {
+    return sourceCanvas;
+  }
+
+  context.fillStyle = "#081221";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(sourceCanvas, 0, 0);
+  return canvas;
+}
+
 async function exportResumePdf() {
   const button = byId("downloadPdf");
   const originalText = button?.textContent || "";
@@ -552,7 +632,8 @@ async function exportResumePdf() {
       throw new Error("PDF libraries unavailable");
     }
 
-    const pages = [...root.querySelectorAll(".print-page")];
+    const canvases = await renderPrintPagesToCanvas(root, html2canvas);
+
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "mm",
@@ -560,19 +641,15 @@ async function exportResumePdf() {
       compress: true,
     });
 
-    for (const [index, pageNode] of pages.entries()) {
-      const canvas = await html2canvas(pageNode, {
-        scale: 2,
-        backgroundColor: null,
-        useCORS: true,
-      });
+    canvases.forEach((canvas, index) => {
+      const pdfCanvas = createPdfReadyCanvas(canvas);
 
       if (index > 0) {
         pdf.addPage("a4", "portrait");
       }
 
-      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, 210, 297, undefined, "FAST");
-    }
+      pdf.addImage(pdfCanvas, "PNG", 0, 0, 210, 297, undefined, "FAST");
+    });
 
     pdf.save(buildPdfFileName());
   } catch {
