@@ -209,6 +209,346 @@ function setStoredLanguage(language) {
   }
 }
 
+let printLayoutRoot = null;
+let pdfLibrariesPromise = null;
+
+function isResumePage() {
+  return Boolean(
+    document.body.classList.contains("resume-page") &&
+      document.querySelector(".resume-sheet .sidebar") &&
+      document.querySelector(".resume-sheet .content")
+  );
+}
+
+function sanitizeClone(node) {
+  const clone = node.cloneNode(true);
+
+  [clone, ...clone.querySelectorAll("[id]")].forEach((element) => {
+    if (element.removeAttribute) {
+      element.removeAttribute("id");
+    }
+  });
+
+  clone.querySelectorAll(".no-print").forEach((element) => {
+    element.classList.remove("no-print");
+  });
+
+  clone.querySelectorAll("[aria-pressed]").forEach((element) => {
+    element.removeAttribute("aria-pressed");
+  });
+
+  return clone;
+}
+
+function teardownPrintLayout() {
+  document.body.classList.remove("has-print-layout");
+
+  if (printLayoutRoot) {
+    printLayoutRoot.remove();
+    printLayoutRoot = null;
+  }
+}
+
+function createPrintPage(toolbarTemplate, sidebarTemplate) {
+  const page = document.createElement("section");
+  page.className = "print-page";
+
+  const toolbarWrap = document.createElement("div");
+  toolbarWrap.className = "print-page__toolbar";
+  toolbarWrap.appendChild(toolbarTemplate.cloneNode(true));
+
+  const sidebarWrap = document.createElement("div");
+  sidebarWrap.className = "print-page__sidebar";
+  sidebarWrap.appendChild(sidebarTemplate.cloneNode(true));
+
+  const content = document.createElement("div");
+  content.className = "print-page__content";
+
+  page.append(toolbarWrap, sidebarWrap, content);
+  return { page, content };
+}
+
+function createSectionShell(sectionClassName, headingTemplate, listClassName) {
+  const section = document.createElement("section");
+  section.className = sectionClassName || "content-section";
+
+  if (headingTemplate) {
+    section.appendChild(headingTemplate.cloneNode(true));
+  }
+
+  const container = document.createElement("div");
+  container.className = listClassName;
+  section.appendChild(container);
+
+  return { section, container };
+}
+
+function collectPrintBlocks() {
+  const content = document.querySelector(".resume-sheet .content");
+  if (!content) {
+    return [];
+  }
+
+  return [...content.children]
+    .map((child) => {
+      if (child.classList.contains("hero-block")) {
+        return {
+          type: "single",
+          node: sanitizeClone(child),
+        };
+      }
+
+      if (!child.classList.contains("content-section")) {
+        return null;
+      }
+
+      const heading = child.querySelector(".section-heading");
+      const lead = child.querySelector(".lead-copy");
+      const entryList = child.querySelector(".entry-list");
+      const skillsGrid = child.querySelector(".skills-grid");
+
+      if (lead) {
+        const section = document.createElement("section");
+        section.className = child.className;
+
+        if (heading) {
+          section.appendChild(sanitizeClone(heading));
+        }
+
+        section.appendChild(sanitizeClone(lead));
+        return {
+          type: "single",
+          node: section,
+        };
+      }
+
+      if (entryList || skillsGrid) {
+        const list = entryList || skillsGrid;
+        return {
+          type: "collection",
+          sectionClassName: child.className,
+          listClassName: list.className,
+          headingTemplate: heading ? sanitizeClone(heading) : null,
+          itemTemplates: [...list.children].map((item) => sanitizeClone(item)),
+        };
+      }
+
+      return {
+        type: "single",
+        node: sanitizeClone(child),
+      };
+    })
+    .filter(Boolean);
+}
+
+function contentOverflows(pageContent) {
+  return pageContent.scrollHeight > pageContent.clientHeight + 1;
+}
+
+function buildPrintLayout() {
+  if (!isResumePage()) {
+    return null;
+  }
+
+  teardownPrintLayout();
+
+  const toolbarSource = document.querySelector(".site-frame > .toolbar");
+  const sidebarSource = document.querySelector(".resume-sheet > .sidebar");
+  if (!toolbarSource || !sidebarSource) {
+    return null;
+  }
+
+  const toolbarTemplate = sanitizeClone(toolbarSource);
+  const sidebarTemplate = sanitizeClone(sidebarSource);
+  const blocks = collectPrintBlocks();
+
+  const root = document.createElement("div");
+  root.className = "print-resume is-measuring";
+  root.setAttribute("aria-hidden", "true");
+  document.body.appendChild(root);
+
+  const pages = [];
+  const createPage = () => {
+    const page = createPrintPage(toolbarTemplate, sidebarTemplate);
+    pages.push(page);
+    root.appendChild(page.page);
+    return page;
+  };
+
+  let currentPage = createPage();
+
+  blocks.forEach((block) => {
+    if (block.type === "single") {
+      const node = block.node.cloneNode(true);
+      currentPage.content.appendChild(node);
+
+      if (contentOverflows(currentPage.content) && currentPage.content.childElementCount > 1) {
+        node.remove();
+        currentPage = createPage();
+        currentPage.content.appendChild(node);
+      }
+
+      return;
+    }
+
+    let shell = createSectionShell(
+      block.sectionClassName,
+      block.headingTemplate,
+      block.listClassName
+    );
+    currentPage.content.appendChild(shell.section);
+
+    block.itemTemplates.forEach((itemTemplate) => {
+      const item = itemTemplate.cloneNode(true);
+      shell.container.appendChild(item);
+
+      if (!contentOverflows(currentPage.content)) {
+        return;
+      }
+
+      item.remove();
+
+      const sectionHasItems = shell.container.childElementCount > 0;
+      const isSectionAloneOnPage = currentPage.content.childElementCount === 1;
+
+      if (!sectionHasItems && isSectionAloneOnPage) {
+        shell.container.appendChild(item);
+        return;
+      }
+
+      if (!sectionHasItems) {
+        shell.section.remove();
+      }
+
+      currentPage = createPage();
+      shell = createSectionShell(
+        block.sectionClassName,
+        block.headingTemplate,
+        block.listClassName
+      );
+      currentPage.content.appendChild(shell.section);
+      shell.container.appendChild(item);
+    });
+  });
+
+  root.classList.remove("is-measuring");
+  printLayoutRoot = root;
+  document.body.classList.add("has-print-layout");
+  return printLayoutRoot;
+}
+
+function getCurrentTranslation() {
+  const language = getStoredLanguage();
+  return appData.translations[language] || appData.translations[appData.settings.defaultLanguage];
+}
+
+function buildPdfFileName() {
+  const translation = getCurrentTranslation();
+  const parts = [translation.basics?.name || "resume", translation.basics?.title || "cv"];
+  return `${parts.join(" - ").replace(/[\\/:*?"<>|]+/g, "").trim() || "resume"}.pdf`;
+}
+
+async function waitForPrintAssets(root) {
+  if (document.fonts?.ready) {
+    try {
+      await document.fonts.ready;
+    } catch {
+      // Ignore font readiness issues.
+    }
+  }
+
+  const images = [...root.querySelectorAll("img")];
+  await Promise.all(
+    images.map(
+      (image) =>
+        new Promise((resolve) => {
+          if (image.complete) {
+            resolve();
+            return;
+          }
+
+          image.addEventListener("load", resolve, { once: true });
+          image.addEventListener("error", resolve, { once: true });
+        })
+    )
+  );
+
+  await new Promise((resolve) => window.requestAnimationFrame(() => window.requestAnimationFrame(resolve)));
+}
+
+async function loadPdfLibraries() {
+  if (!pdfLibrariesPromise) {
+    pdfLibrariesPromise = Promise.all([
+      import("https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/+esm"),
+      import("https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm"),
+    ]).then(([html2canvasModule, jsPdfModule]) => ({
+      html2canvas: html2canvasModule.default || html2canvasModule,
+      jsPDF: jsPdfModule.jsPDF || jsPdfModule.default?.jsPDF,
+    }));
+  }
+
+  return pdfLibrariesPromise;
+}
+
+async function exportResumePdf() {
+  const root = buildPrintLayout();
+  if (!root) {
+    window.print();
+    return;
+  }
+
+  const button = byId("downloadPdf");
+  const originalText = button?.textContent || "";
+  const translation = getCurrentTranslation();
+
+  if (button) {
+    button.disabled = true;
+    button.textContent = translation.meta.pdfButtonBusy || "PDF wird erstellt...";
+  }
+
+  try {
+    await waitForPrintAssets(root);
+    const { html2canvas, jsPDF } = await loadPdfLibraries();
+
+    if (!html2canvas || !jsPDF) {
+      throw new Error("PDF libraries unavailable");
+    }
+
+    const pages = [...root.querySelectorAll(".print-page")];
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+      compress: true,
+    });
+
+    for (const [index, pageNode] of pages.entries()) {
+      const canvas = await html2canvas(pageNode, {
+        scale: 2,
+        backgroundColor: null,
+        useCORS: true,
+      });
+
+      if (index > 0) {
+        pdf.addPage("a4", "portrait");
+      }
+
+      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, 210, 297, undefined, "FAST");
+    }
+
+    pdf.save(buildPdfFileName());
+  } catch {
+    window.print();
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+
+    teardownPrintLayout();
+  }
+}
+
 function updateLanguageButtons(language) {
   document.querySelectorAll(".lang-switch__button").forEach((button) => {
     const isActive = button.dataset.lang === language;
@@ -321,6 +661,8 @@ function updateSeo(title, description, path, language) {
 }
 
 function applyLanguage(language) {
+  teardownPrintLayout();
+
   const translation = appData.translations[language] || appData.translations[appData.settings.defaultLanguage];
   const { meta, basics } = translation;
 
@@ -395,14 +737,25 @@ function init() {
     return;
   }
 
+  const params = new URLSearchParams(window.location.search);
+
   bindLanguageSwitcher();
 
   const downloadPdf = byId("downloadPdf");
   if (downloadPdf) {
-    downloadPdf.addEventListener("click", () => window.print());
+    downloadPdf.addEventListener("click", () => {
+      void exportResumePdf();
+    });
   }
 
+  window.addEventListener("beforeprint", buildPrintLayout);
+  window.addEventListener("afterprint", teardownPrintLayout);
+
   applyLanguage(getStoredLanguage());
+
+  if (params.get("printLayout") === "1") {
+    buildPrintLayout();
+  }
 }
 
 init();

@@ -732,6 +732,454 @@ a {
   max-width: 840px;
 }
 
+.print-resume {
+  display: none;
+}
+
+.print-resume.is-measuring {
+  position: fixed;
+  left: -260mm;
+  top: 0;
+  z-index: -10;
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.resume-page.has-print-layout .site-frame {
+  display: none;
+}
+
+body.resume-page.has-print-layout .print-resume:not(.is-measuring) {
+  display: block;
+}
+
+.print-page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  max-height: 297mm;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(57, 198, 214, 0.18), transparent 20%),
+    radial-gradient(circle at 86% 8%, rgba(15, 104, 216, 0.22), transparent 22%),
+    linear-gradient(160deg, var(--page-bg), var(--page-bg-2) 48%, #0a1323 100%);
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+  break-after: page;
+  page-break-after: always;
+}
+
+.print-page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+
+.print-page::before {
+  content: "";
+  position: absolute;
+  top: 40mm;
+  left: 10mm;
+  right: 10mm;
+  bottom: 10mm;
+  border-radius: 12mm;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 253, 0.98)),
+    var(--sheet-strong);
+}
+
+.print-page__toolbar {
+  position: absolute;
+  top: 10mm;
+  left: 10mm;
+  right: 10mm;
+  z-index: 3;
+}
+
+.print-page__sidebar {
+  position: absolute;
+  top: 40mm;
+  left: 10mm;
+  bottom: 10mm;
+  width: 51mm;
+  z-index: 2;
+}
+
+.print-page__content {
+  position: absolute;
+  top: 52mm;
+  left: 66mm;
+  right: 14mm;
+  bottom: 14mm;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.print-page .toolbar {
+  position: static;
+  z-index: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 60mm;
+  gap: 4mm 8mm;
+  align-items: start;
+  min-height: 25mm;
+  margin: 0;
+  padding: 5mm 6mm;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10mm;
+  background: linear-gradient(180deg, rgba(19, 38, 63, 0.96), rgba(12, 27, 47, 0.92));
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.print-page .toolbar__left {
+  display: grid;
+  gap: 4mm;
+  align-content: start;
+}
+
+.print-page .toolbar__meta {
+  gap: 0;
+}
+
+.print-page .toolbar__eyebrow {
+  margin: 0 0 2mm;
+  font-size: 6.5pt;
+  letter-spacing: 0.2em;
+  color: rgba(217, 231, 247, 0.84);
+}
+
+.print-page .toolbar__title {
+  margin: 0;
+  font-size: 14pt;
+  line-height: 1.1;
+  color: #f8fbff;
+}
+
+.print-page .nav-links {
+  gap: 1.4mm;
+  padding: 1.2mm;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.print-page .nav-link {
+  min-height: 10.5mm;
+  padding: 0 4.2mm;
+  font-size: 7.7pt;
+}
+
+.print-page .toolbar__actions {
+  width: 60mm;
+  gap: 2.6mm;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.print-page .lang-switch {
+  gap: 1.2mm;
+  padding: 1.2mm;
+}
+
+.print-page .lang-switch__button {
+  min-width: 10.5mm;
+  min-height: 10.5mm;
+  padding: 0 3.2mm;
+  font-size: 7.2pt;
+}
+
+.print-page .button {
+  min-height: 11.5mm;
+  padding: 0 5mm;
+  font-size: 8pt;
+  box-shadow: none;
+}
+
+.print-page .button--primary {
+  width: 100%;
+}
+
+.print-page .sidebar {
+  position: static;
+  height: 100%;
+  padding: 6mm 5mm 6.5mm;
+  border-radius: 12mm 0 0 12mm;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 18%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025) 0,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    var(--sidebar);
+  color: var(--sidebar-ink);
+  box-shadow: none;
+}
+
+.print-page .sidebar::after {
+  display: block;
+  top: 6mm;
+  bottom: 6mm;
+}
+
+.print-page .photo-card {
+  margin-bottom: 5.5mm;
+}
+
+.print-page .photo-frame {
+  border-radius: 8mm;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 35%),
+    linear-gradient(145deg, #183250, #0d1b2d);
+}
+
+.print-page .photo-frame::before {
+  inset: 3mm;
+  border-radius: 5.5mm;
+}
+
+.print-page .profile-photo {
+  transform: scale(1.02);
+}
+
+.print-page .photo-fallback {
+  font-size: 30pt;
+}
+
+.print-page .sidebar__role {
+  margin: 3mm 0 0;
+  font-size: 8.8pt;
+  line-height: 1.55;
+}
+
+.print-page .sidebar-section + .sidebar-section {
+  margin-top: 4mm;
+  padding-top: 4mm;
+}
+
+.print-page .contact-list {
+  gap: 3.2mm;
+}
+
+.print-page .contact-item {
+  gap: 1mm;
+}
+
+.print-page .contact-item dt {
+  font-size: 6.1pt;
+  letter-spacing: 0.18em;
+}
+
+.print-page .contact-item dd {
+  font-size: 8.1pt;
+  line-height: 1.34;
+}
+
+.print-page .chip-list {
+  gap: 2mm;
+}
+
+.print-page .chip {
+  min-height: 7mm;
+  padding: 0 2.8mm;
+  font-size: 7pt;
+}
+
+.print-page .compact-list {
+  padding-left: 4.2mm;
+  gap: 1.8mm;
+  font-size: 8pt;
+  line-height: 1.42;
+}
+
+.print-page .hero-block {
+  position: relative;
+  padding: 0 0 5.5mm;
+  border-bottom: 1px solid rgba(16, 32, 51, 0.11);
+}
+
+.print-page .hero-block__grid {
+  grid-template-columns: minmax(0, 1fr) 28mm;
+  gap: 4mm;
+}
+
+.print-page .hero-monogram {
+  padding-top: 2mm;
+  font-size: 42pt;
+  color: rgba(15, 104, 216, 0.13);
+}
+
+.print-page .hero-block__name {
+  max-width: 8ch;
+  font-size: 29.5pt;
+  line-height: 0.88;
+}
+
+.print-page .hero-block__name--small {
+  max-width: 10ch;
+  font-size: 24pt;
+}
+
+.print-page .hero-block__title {
+  max-width: 30ch;
+  margin: 3mm 0;
+  font-size: 11pt;
+  line-height: 1.45;
+}
+
+.print-page .hero-block__summary,
+.print-page .lead-copy {
+  font-size: 9.1pt;
+  line-height: 1.74;
+}
+
+.print-page .meta-band {
+  gap: 3mm;
+  margin-top: 5mm;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.print-page .meta-pill {
+  padding: 4mm 3.4mm 3.4mm;
+  border-radius: 5mm;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 246, 255, 0.94)),
+    var(--sheet-strong);
+  border: 1px solid rgba(15, 104, 216, 0.12);
+  box-shadow: none;
+}
+
+.print-page .meta-pill::before {
+  left: 3.4mm;
+  width: 12mm;
+  height: 1.2mm;
+}
+
+.print-page .meta-pill__value {
+  margin-bottom: 1mm;
+  font-size: 9.4pt;
+}
+
+.print-page .meta-pill__label {
+  font-size: 6.8pt;
+  line-height: 1.36;
+}
+
+.print-page .content-section {
+  padding-top: 5.5mm;
+}
+
+.print-page .content-section + .content-section {
+  border-top: 1px solid rgba(16, 32, 51, 0.11);
+}
+
+.print-page .section-heading {
+  gap: 1.6mm;
+  margin-bottom: 3.5mm;
+}
+
+.print-page .section-label,
+.print-page .hero-block__eyebrow {
+  margin: 0 0 1mm;
+  font-size: 6.6pt;
+  letter-spacing: 0.2em;
+}
+
+.print-page .section-heading h3 {
+  max-width: 22ch;
+  font-size: 18.5pt;
+}
+
+.print-page .entry-list,
+.print-page .skills-grid {
+  display: grid;
+  gap: 4mm;
+}
+
+.print-page .entry-card,
+.print-page .skill-card {
+  padding: 5mm 5.5mm 5.5mm;
+  border-radius: 5.5mm;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 253, 0.97)),
+    var(--sheet-strong);
+  border: 1px solid rgba(16, 32, 51, 0.07);
+  box-shadow: none;
+}
+
+.print-page .entry-card::before,
+.print-page .skill-card::before {
+  top: 4mm;
+  bottom: 4mm;
+  width: 1.2mm;
+}
+
+.print-page .entry-card__top {
+  margin-bottom: 2.5mm;
+  gap: 3mm;
+}
+
+.print-page .entry-card__title {
+  font-size: 10.2pt;
+}
+
+.print-page .entry-card__subtitle {
+  font-size: 8.5pt;
+  line-height: 1.35;
+}
+
+.print-page .entry-card__period {
+  font-size: 6.8pt;
+}
+
+.print-page .entry-card__text {
+  font-size: 8.85pt;
+  line-height: 1.66;
+}
+
+.print-page .entry-card__list {
+  margin-top: 2.8mm;
+  padding-left: 4.4mm;
+  gap: 1.8mm;
+  font-size: 8.4pt;
+  line-height: 1.5;
+}
+
+.print-page .tag-list {
+  gap: 2mm;
+  margin-top: 3mm;
+}
+
+.print-page .tag {
+  min-height: 7mm;
+  padding: 0 2.8mm;
+  font-size: 6.9pt;
+}
+
+.print-page .entry-link {
+  margin-top: 3mm;
+  font-size: 8.5pt;
+}
+
+.print-page .skills-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4mm;
+}
+
+.print-page .skill-card h4 {
+  margin: 0 0 3mm;
+  font-size: 9.6pt;
+}
+
 .short-print-summary {
   display: none;
 }
@@ -1694,6 +2142,21 @@ code {
   margin: 6mm;
 }
 
+@page resume-page {
+  size: A4;
+  margin: 0;
+}
+
+@page short-cv-page {
+  size: A4;
+  margin: 6mm;
+}
+
+@page letter-page {
+  size: A4;
+  margin: 12mm;
+}
+
 @media print {
   :root {
     --shadow: none;
@@ -1707,18 +2170,23 @@ code {
     transition: none !important;
   }
 
+  html {
+    background: #ffffff;
+  }
+
   body {
-    background:
-      radial-gradient(circle at top left, rgba(57, 198, 214, 0.16), transparent 24%),
-      radial-gradient(circle at 82% 10%, rgba(15, 104, 216, 0.22), transparent 28%),
-      linear-gradient(160deg, var(--page-bg), var(--page-bg-2) 48%, #0a1323 100%);
+    background: #ffffff;
     font-size: 10.35pt;
   }
 
-  body::before,
+  body::before {
+    display: none;
+  }
+
   .ambient,
   .no-print,
-  .footer-note {
+  .footer-note,
+  .document-card__viewer {
     display: none !important;
   }
 
@@ -1728,22 +2196,176 @@ code {
     padding: 0;
   }
 
-  .resume-sheet {
-    grid-template-columns: 72mm 1fr;
-    border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: var(--sheet);
-    box-shadow: none;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+  .document-grid {
+    grid-template-columns: 1fr;
   }
 
-  .resume-sheet::before {
+  body.resume-page {
+    page: resume-page;
+    position: relative;
+    color: var(--ink);
+    background: transparent;
+  }
+
+  body.resume-page.has-print-layout::before,
+  body.resume-page.has-print-layout::after {
+    display: none !important;
+  }
+
+  body.resume-page.has-print-layout .site-frame {
+    display: none !important;
+  }
+
+  body.resume-page.has-print-layout .print-resume {
+    display: block !important;
+  }
+
+  body.resume-page::before {
+    content: "";
+    position: fixed;
+    top: -52mm;
+    right: -10mm;
+    bottom: -12mm;
+    left: -10mm;
     display: block;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(57, 198, 214, 0.18), transparent 20%),
+      radial-gradient(circle at 86% 8%, rgba(15, 104, 216, 0.22), transparent 22%),
+      linear-gradient(160deg, var(--page-bg), var(--page-bg-2) 48%, #0a1323 100%);
+    z-index: -6;
   }
 
-  .sidebar {
-    padding: 20px 18px 22px;
+  body.resume-page::after {
+    content: "";
+    position: fixed;
+    top: -12mm;
+    left: 0;
+    right: 0;
+    bottom: -2mm;
+    display: block;
+    border-radius: 12mm;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 253, 0.98)),
+      var(--sheet-strong);
+    z-index: -5;
+  }
+
+  body.resume-page .site-frame {
+    position: static;
+  }
+
+  body.resume-page .toolbar.no-print {
+    position: fixed;
+    top: -42mm;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 60mm;
+    gap: 4mm 8mm;
+    align-items: start;
+    min-height: 25mm;
+    margin: 0;
+    padding: 5mm 6mm;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10mm;
+    background: linear-gradient(180deg, rgba(19, 38, 63, 0.96), rgba(12, 27, 47, 0.92));
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  body.resume-page .toolbar__left {
+    display: grid;
+    gap: 4mm;
+    align-content: start;
+  }
+
+  body.resume-page .toolbar__meta {
+    gap: 0;
+  }
+
+  body.resume-page .toolbar__eyebrow {
+    margin: 0 0 2mm;
+    font-size: 6.5pt;
+    letter-spacing: 0.2em;
+    color: rgba(217, 231, 247, 0.84);
+  }
+
+  body.resume-page .toolbar__title {
+    font-size: 14pt;
+    line-height: 1.1;
+    color: #f8fbff;
+  }
+
+  body.resume-page .nav-links {
+    gap: 1.4mm;
+    padding: 1.2mm;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body.resume-page .nav-link {
+    min-height: 10.5mm;
+    padding: 0 4.2mm;
+    font-size: 7.7pt;
+  }
+
+  body.resume-page .toolbar__actions {
+    width: 60mm;
+    gap: 2.6mm;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  body.resume-page .lang-switch {
+    gap: 1.2mm;
+    padding: 1.2mm;
+  }
+
+  body.resume-page .lang-switch__button {
+    min-width: 10.5mm;
+    min-height: 10.5mm;
+    padding: 0 3.2mm;
+    font-size: 7.2pt;
+  }
+
+  body.resume-page .button {
+    min-height: 11.5mm;
+    padding: 0 5mm;
+    font-size: 8pt;
+    box-shadow: none;
+  }
+
+  body.resume-page .button--primary {
+    width: 100%;
+  }
+
+  body.resume-page .resume-sheet {
+    position: static;
+    display: block;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  body.resume-page .resume-sheet::before {
+    display: none;
+  }
+
+  body.resume-page .sidebar {
+    position: fixed;
+    top: -12mm;
+    left: 0;
+    bottom: -2mm;
+    z-index: 25;
+    width: 51mm;
+    padding: 6mm 5mm 6.5mm;
+    border-radius: 12mm 0 0 12mm;
+    overflow: hidden;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 18%),
       repeating-linear-gradient(
@@ -1751,142 +2373,307 @@ code {
         rgba(255, 255, 255, 0.025) 0,
         rgba(255, 255, 255, 0.025) 1px,
         transparent 1px,
-        transparent 28px
+        transparent 24px
       ),
       var(--sidebar);
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+    color: var(--sidebar-ink);
+    box-shadow: none;
   }
 
-  .sidebar::after {
+  body.resume-page .sidebar::after {
     display: block;
-    top: 20px;
-    bottom: 20px;
+    top: 6mm;
+    bottom: 6mm;
   }
 
-  .content {
-    padding: 22px 24px 24px;
+  body.resume-page .photo-card {
+    margin-bottom: 5.5mm;
   }
 
-  .photo-frame {
-    border-radius: 26px;
+  body.resume-page .photo-frame {
+    border-radius: 8mm;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: none;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 35%),
       linear-gradient(145deg, #183250, #0d1b2d);
   }
 
-  .photo-frame::before {
+  body.resume-page .photo-frame::before {
     display: block;
-    inset: 12px;
-    border-radius: 20px;
+    inset: 3mm;
+    border-radius: 5.5mm;
   }
 
-  .profile-photo {
-    transform: scale(1.01);
+  body.resume-page .profile-photo {
+    transform: scale(1.02);
   }
 
-  .hero-block {
-    padding-bottom: 18px;
+  body.resume-page .photo-fallback {
+    font-size: 30pt;
   }
 
-  .hero-block__grid {
-    grid-template-columns: minmax(0, 1fr) 112px;
-    gap: 14px;
+  body.resume-page .sidebar__role {
+    margin: 3mm 0 0;
+    font-size: 8.8pt;
+    line-height: 1.55;
   }
 
-  .hero-monogram {
+  body.resume-page .sidebar-section + .sidebar-section {
+    margin-top: 4mm;
+    padding-top: 4mm;
+  }
+
+  body.resume-page .section-label {
+    color: rgba(77, 187, 255, 0.88);
+  }
+
+  body.resume-page .contact-list {
+    gap: 3.2mm;
+  }
+
+  body.resume-page .contact-item {
+    gap: 1mm;
+  }
+
+  body.resume-page .contact-item dt {
+    font-size: 6.1pt;
+    letter-spacing: 0.18em;
+  }
+
+  body.resume-page .contact-item dd {
+    font-size: 8.1pt;
+    line-height: 1.34;
+  }
+
+  body.resume-page .chip-list {
+    gap: 2mm;
+  }
+
+  body.resume-page .chip {
+    min-height: 7mm;
+    padding: 0 2.8mm;
+    font-size: 7pt;
+  }
+
+  body.resume-page .compact-list {
+    padding-left: 4.2mm;
+    gap: 1.8mm;
+    font-size: 8pt;
+    line-height: 1.42;
+  }
+
+  body.resume-page .content {
+    position: relative;
+    z-index: 5;
+    margin-left: 56mm;
+    padding: 0 0 0 4mm;
+    background: transparent;
+  }
+
+  body.resume-page .hero-block {
+    padding: 0 0 5.5mm;
+    border-bottom: 1px solid rgba(16, 32, 51, 0.11);
+  }
+
+  body.resume-page .hero-block__grid {
+    grid-template-columns: minmax(0, 1fr) 28mm;
+    gap: 4mm;
+  }
+
+  body.resume-page .hero-monogram {
     display: flex;
-    padding-top: 8px;
-    font-size: 58pt;
+    padding-top: 2mm;
+    font-size: 42pt;
+    color: rgba(15, 104, 216, 0.13);
   }
 
-  .hero-block__name {
-    font-size: 28.5pt;
-    max-width: 9ch;
+  body.resume-page .hero-block__name {
+    max-width: 8ch;
+    font-size: 29.5pt;
+    line-height: 0.88;
   }
 
-  .hero-block__title {
-    max-width: 34ch;
-    font-size: 11.4pt;
-    margin: 12px 0 10px;
+  body.resume-page .hero-block__name--small {
+    max-width: 10ch;
+    font-size: 24pt;
   }
 
-  .hero-block__summary,
-  .lead-copy,
-  .entry-card__text,
-  .entry-card__list,
-  .compact-list {
-    line-height: 1.5;
+  body.resume-page .hero-block__title {
+    max-width: 30ch;
+    margin: 3mm 0;
+    font-size: 11pt;
+    line-height: 1.45;
   }
 
-  .section-heading h3 {
-    font-size: 17.6pt;
+  body.resume-page .hero-block__summary,
+  body.resume-page .lead-copy {
+    font-size: 9.1pt;
+    line-height: 1.74;
   }
 
-  .meta-band {
-    gap: 8px;
+  body.resume-page .meta-band {
+    gap: 3mm;
+    margin-top: 5mm;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .meta-pill {
-    padding: 10px 11px 10px;
+  body.resume-page .meta-pill {
+    padding: 4mm 3.4mm 3.4mm;
+    border-radius: 5mm;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(240, 246, 255, 0.92)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 246, 255, 0.94)),
       var(--sheet-strong);
+    border: 1px solid rgba(15, 104, 216, 0.12);
     box-shadow: none;
   }
 
-  .meta-pill__value {
-    font-size: 1rem;
+  body.resume-page .meta-pill::before {
+    left: 3.4mm;
+    width: 12mm;
+    height: 1.2mm;
   }
 
-  .meta-pill__label {
-    line-height: 1.46;
+  body.resume-page .meta-pill__value {
+    margin-bottom: 1mm;
+    font-size: 9.4pt;
   }
 
-  .entry-card,
-  .skill-card,
-  .photo-card,
-  .sidebar-section,
-  .hero-block,
-  .content-section {
+  body.resume-page .meta-pill__label {
+    font-size: 6.8pt;
+    line-height: 1.36;
+  }
+
+  body.resume-page .content-section {
+    padding-top: 5.5mm;
+  }
+
+  body.resume-page .content-section + .content-section {
+    border-top: 1px solid rgba(16, 32, 51, 0.11);
+  }
+
+  body.resume-page .section-heading {
+    gap: 1.6mm;
+    margin-bottom: 3.5mm;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  body.resume-page .section-label,
+  body.resume-page .hero-block__eyebrow {
+    margin: 0 0 1mm;
+    font-size: 6.6pt;
+    letter-spacing: 0.2em;
+  }
+
+  body.resume-page .section-heading h3 {
+    max-width: 22ch;
+    font-size: 18.5pt;
+  }
+
+  body.resume-page p,
+  body.resume-page li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  body.resume-page .entry-list,
+  body.resume-page .skills-grid {
+    gap: 4mm;
+  }
+
+  body.resume-page .hero-block,
+  body.resume-page .photo-card,
+  body.resume-page .sidebar-section,
+  body.resume-page .entry-card,
+  body.resume-page .skill-card,
+  body.resume-page .section-heading,
+  body.resume-page .entry-card__top {
     break-inside: avoid;
     page-break-inside: avoid;
-    box-shadow: none;
   }
 
-  .entry-card,
-  .skill-card {
-    padding: 14px 16px 16px;
+  body.resume-page .entry-card,
+  body.resume-page .skill-card {
+    padding: 5mm 5.5mm 5.5mm;
+    border-radius: 5.5mm;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 253, 0.97)),
       var(--sheet-strong);
+    border: 1px solid rgba(16, 32, 51, 0.07);
+    box-shadow: none;
   }
 
-  .entry-card__title {
-    font-size: 1.06rem;
+  body.resume-page .entry-card::before,
+  body.resume-page .skill-card::before {
+    top: 4mm;
+    bottom: 4mm;
+    width: 1.2mm;
   }
 
-  .entry-card__subtitle {
-    font-size: 0.92rem;
+  body.resume-page .entry-card__top {
+    margin-bottom: 2.5mm;
+    gap: 3mm;
   }
 
-  .entry-card__period {
-    font-size: 0.76rem;
+  body.resume-page .entry-card__title {
+    font-size: 10.2pt;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+  body.resume-page .entry-card__subtitle {
+    font-size: 8.5pt;
+    line-height: 1.35;
   }
 
-  .document-grid {
-    grid-template-columns: 1fr;
+  body.resume-page .entry-card__period {
+    font-size: 6.8pt;
   }
 
-  .document-card__viewer {
-    display: none;
+  body.resume-page .entry-card__text {
+    font-size: 8.85pt;
+    line-height: 1.66;
+  }
+
+  body.resume-page .entry-card__list {
+    margin-top: 2.8mm;
+    padding-left: 4.4mm;
+    gap: 1.8mm;
+    font-size: 8.4pt;
+    line-height: 1.5;
+  }
+
+  body.resume-page .tag-list {
+    gap: 2mm;
+    margin-top: 3mm;
+  }
+
+  body.resume-page .tag {
+    min-height: 7mm;
+    padding: 0 2.8mm;
+    font-size: 6.9pt;
+  }
+
+  body.resume-page .entry-link {
+    margin-top: 3mm;
+    font-size: 8.5pt;
+  }
+
+  body.resume-page .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4mm;
+  }
+
+  body.resume-page .skill-card h4 {
+    margin: 0 0 3mm;
+    font-size: 9.6pt;
+  }
+
+  body.short-cv-page {
+    page: short-cv-page;
+  }
+
+  body.letter-page {
+    page: letter-page;
   }
 
   .letter-sheet {
