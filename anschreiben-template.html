@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anton Lyshtva | Anschreiben Vorlage</title>
+  <meta
+    name="description"
+    content="Wiederverwendbare deutsche Anschreiben-Vorlage für Bewerbungen von Anton Lyshtva."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="letter-page">
+  <div class="site-frame">
+    <div class="ambient ambient--one no-print" aria-hidden="true"></div>
+    <div class="ambient ambient--two no-print" aria-hidden="true"></div>
+    <div class="ambient ambient--grid no-print" aria-hidden="true"></div>
+
+    <header class="toolbar no-print letter-toolbar">
+      <div class="toolbar__left">
+        <div class="toolbar__meta">
+          <p class="toolbar__eyebrow">Template / Bewerbung / PDF</p>
+          <h1 class="toolbar__title">Anschreiben Vorlage</h1>
+        </div>
+      </div>
+
+      <div class="toolbar__actions">
+        <a class="button button--ghost" href="index.html">Zurück zum Lebenslauf</a>
+        <button class="button button--primary" id="downloadPdf" type="button">PDF herunterladen</button>
+      </div>
+    </header>
+
+    <main class="letter-sheet">
+      <section class="letter-note no-print">
+        <p>Ersetze die markierten Platzhalter vor dem Versand. Diese Vorlage ist bewusst allgemein gehalten und nicht auf ein einzelnes Unternehmen zugeschnitten.</p>
+      </section>
+
+      <section class="letter-header">
+        <div class="letter-sender">
+          <h2>Anton Lyshtva</h2>
+          <p>Am Jödebrunnen 3</p>
+          <p>38118 Braunschweig</p>
+          <p>antonlistva47@gmail.com</p>
+          <p>+49 1520 5379547</p>
+        </div>
+
+        <div class="letter-recipient">
+          <p><span class="placeholder">[Firmenname]</span></p>
+          <p><span class="placeholder">[Ansprechperson / HR-Team]</span></p>
+          <p><span class="placeholder">[Straße und Hausnummer]</span></p>
+          <p><span class="placeholder">[PLZ Ort]</span></p>
+        </div>
+      </section>
+
+      <section class="letter-meta-row">
+        <p><strong>Braunschweig,</strong> <span class="placeholder">[Datum]</span></p>
+        <p><strong>Bewerbung um</strong> <span class="placeholder">[Ausbildung / Junior-Stelle / Praktikum]</span></p>
+      </section>
+
+      <section class="letter-body">
+        <p>Sehr geehrte/r <span class="placeholder">[Name der Ansprechperson]</span>,</p>
+
+        <p>
+          hiermit bewerbe ich mich um die Position <span class="placeholder">[genaue Stellenbezeichnung]</span>
+          bei <span class="placeholder">[Firmenname]</span>. Ich komme aus der Ukraine, lebe derzeit in
+          Deutschland und möchte meinen beruflichen Weg hier langfristig in der Softwareentwicklung
+          aufbauen. Ich bin ab sofort verfügbar und offen sowohl für eine Ausbildung als auch für
+          den Einstieg in eine Junior-Position.
+        </p>
+
+        <p>
+          Mein fachlicher Schwerpunkt liegt auf moderner Webentwicklung mit Python, C++, C#,
+          JavaScript, TypeScript, React und ASP.NET Core. Durch meine Ausbildung an der IT Step
+          Academy, eigene GitHub-Projekte und kontinuierliches Selbststudium habe ich praktische
+          Erfahrung mit Webanwendungen, APIs, Echtzeitfunktionen, PWAs und Cloud-nahen Deployments
+          gesammelt.
+        </p>
+
+        <p>
+          Besonders interessant ist für mich Ihr Unternehmen, weil
+          <span class="placeholder">[hier 2-3 konkrete Sätze einfügen: Branche, Produkte, Team, Technologie, Standort, Werte]</span>.
+          Ich suche bewusst ein Umfeld, in dem ich meine Kenntnisse weiter ausbauen, schnell
+          Verantwortung übernehmen und mich fachlich wie sprachlich weiterentwickeln kann.
+        </p>
+
+        <p>
+          Deutsch lerne ich aktiv weiter. Mein aktuelles offizielles Niveau ist A2, die
+          B1-Prüfung plane ich in naher Zukunft. Ich arbeite konsequent daran, mich in Deutschland
+          sprachlich und beruflich weiter zu integrieren, und sehe den direkten Austausch im Team
+          als den besten Weg, meine Sprache und meine fachlichen Fähigkeiten gleichzeitig zu
+          verbessern.
+        </p>
+
+        <p>
+          Über die Gelegenheit zu einem persönlichen Gespräch freue ich mich sehr. Gerne erläutere
+          ich Ihnen meine Motivation, meine Projekte und meinen möglichen Starttermin
+          <span class="placeholder">[z. B. ab sofort / ab DD.MM.YYYY]</span> im Detail.
+        </p>
+
+        <p>Mit freundlichen Grüßen</p>
+        <p class="letter-signature">Anton Lyshtva</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("downloadPdf")?.addEventListener("click", () => window.print());
+  </script>
+</body>
+</html>

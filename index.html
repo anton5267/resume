@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anton Lyshtva | Lebenslauf</title>
+  <meta
+    name="description"
+    content="Lebenslauf von Anton Lyshtva als Website mit druckoptimierter PDF-Ansicht."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-frame">
+    <div class="ambient ambient--one no-print" aria-hidden="true"></div>
+    <div class="ambient ambient--two no-print" aria-hidden="true"></div>
+    <div class="ambient ambient--grid no-print" aria-hidden="true"></div>
+
+    <header class="toolbar no-print">
+      <div class="toolbar__left">
+        <div class="toolbar__meta">
+          <p class="toolbar__eyebrow" id="toolbarEyebrow">Resume / Website / PDF</p>
+          <h1 class="toolbar__title" id="toolbarTitle">Junior Software Developer | Deutschland</h1>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a class="nav-link nav-link--active" id="navResume" href="index.html">Lebenslauf</a>
+          <a class="nav-link" id="navDiploma" href="diploma.html">Diplom</a>
+        </nav>
+      </div>
+
+      <div class="toolbar__actions">
+        <div class="lang-switch" id="langSwitch" role="group" aria-label="Language switch">
+          <button class="lang-switch__button" data-lang="uk" type="button">UA</button>
+          <button class="lang-switch__button" data-lang="de" type="button">DE</button>
+        </div>
+
+        <a class="button button--ghost" id="profileLink" href="#" target="_blank" rel="noreferrer">
+          GitHub Profil
+        </a>
+        <button class="button button--primary" id="downloadPdf" type="button">
+          PDF herunterladen
+        </button>
+      </div>
+    </header>
+
+    <div class="resume-sheet">
+      <aside class="sidebar">
+        <section class="photo-card">
+          <div class="photo-frame" id="photoFrame">
+            <img class="profile-photo" id="profilePhoto" alt="Profilfoto">
+            <div class="photo-fallback" id="photoFallback">
+              <span id="photoInitials">AL</span>
+            </div>
+          </div>
+          <p class="sidebar__role" id="sidebarRole"></p>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label" id="labelContact">Kontakt</p>
+          <dl class="contact-list" id="contacts"></dl>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label" id="labelLanguages">Sprachen</p>
+          <div class="chip-list" id="languages"></div>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label" id="labelStrengths">Starken</p>
+          <ul class="compact-list" id="strengths"></ul>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label" id="labelInterests">Interessen</p>
+          <div class="chip-list chip-list--light" id="interests"></div>
+        </section>
+      </aside>
+
+      <main class="content">
+        <section class="hero-block">
+          <div class="hero-block__grid">
+            <div class="hero-copy">
+              <p class="hero-block__eyebrow" id="eyebrow"></p>
+              <h2 class="hero-block__name" id="name"></h2>
+              <p class="hero-block__title" id="title"></p>
+              <p class="hero-block__summary" id="summary"></p>
+            </div>
+
+            <div class="hero-monogram" id="heroMonogram" aria-hidden="true">AL</div>
+          </div>
+
+          <div class="meta-band" id="highlights"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <p class="section-label" id="objectiveLabel">Ziel</p>
+            <h3 id="objectiveTitle">Bewerbungsprofil</h3>
+          </div>
+          <p class="lead-copy" id="objective"></p>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <p class="section-label" id="educationLabel">Ausbildung</p>
+            <h3 id="educationTitle">Schulischer und fachlicher Hintergrund</h3>
+          </div>
+          <div class="entry-list" id="education"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <p class="section-label" id="projectsLabel">Projekte</p>
+            <h3 id="projectsTitle">Ausgewahlte technische Arbeiten</h3>
+          </div>
+          <div class="entry-list" id="projects"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <p class="section-label" id="skillsLabel">Kenntnisse</p>
+            <h3 id="skillsTitle">Technischer Stack</h3>
+          </div>
+          <div class="skills-grid" id="skills"></div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer-note no-print">
+      <p>
+        Lege dein Foto als <code>assets/profile-photo.jpg</code> ab oder passe den Pfad in
+        <code>resume-data.js</code> an. Fur PDF einfach auf <strong>PDF herunterladen</strong>
+        klicken und im Browser <strong>Save as PDF</strong> wahlen. Fur Bewerbungen an
+        einzelne Unternehmen gibt es zusatzlich die Datei <code>anschreiben-template.html</code>.
+      </p>
+    </footer>
+  </div>
+
+  <script src="resume-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

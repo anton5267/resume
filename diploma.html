@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anton Lyshtva | Diploma</title>
+  <meta
+    name="description"
+    content="Diplom und Anlagen von Anton Lyshtva als eingebettete PDF-Dokumente."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-frame">
+    <div class="ambient ambient--one no-print" aria-hidden="true"></div>
+    <div class="ambient ambient--two no-print" aria-hidden="true"></div>
+    <div class="ambient ambient--grid no-print" aria-hidden="true"></div>
+
+    <header class="toolbar no-print">
+      <div class="toolbar__left">
+        <div class="toolbar__meta">
+          <p class="toolbar__eyebrow" id="toolbarEyebrow">Resume / Website / PDF</p>
+          <h1 class="toolbar__title" id="toolbarTitle">Diploma & Documents</h1>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a class="nav-link" id="navResume" href="index.html">Lebenslauf</a>
+          <a class="nav-link nav-link--active" id="navDiploma" href="diploma.html">Diplom</a>
+        </nav>
+      </div>
+
+      <div class="toolbar__actions">
+        <div class="lang-switch" id="langSwitch" role="group" aria-label="Language switch">
+          <button class="lang-switch__button" data-lang="uk" type="button">UA</button>
+          <button class="lang-switch__button" data-lang="de" type="button">DE</button>
+        </div>
+
+        <a class="button button--ghost" id="profileLink" href="#" target="_blank" rel="noreferrer">
+          GitHub Profil
+        </a>
+      </div>
+    </header>
+
+    <div class="resume-sheet diploma-layout">
+      <aside class="sidebar">
+        <section class="photo-card">
+          <div class="photo-frame">
+            <img class="profile-photo" id="profilePhoto" alt="Profilfoto">
+            <div class="photo-fallback" id="photoFallback">
+              <span id="photoInitials">AL</span>
+            </div>
+          </div>
+          <p class="sidebar__role" id="diplomaSidebarRole"></p>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label" id="diplomaFactsLabel">Fakten</p>
+          <dl class="contact-list" id="diplomaFacts"></dl>
+        </section>
+
+        <section class="sidebar-section">
+          <p class="section-label" id="diplomaDocsLabel">Dokumente</p>
+          <div class="chip-list chip-list--light" id="diplomaDocChips"></div>
+        </section>
+      </aside>
+
+      <main class="content">
+        <section class="hero-block hero-block--compact">
+          <div class="hero-block__grid">
+            <div class="hero-copy">
+              <p class="hero-block__eyebrow" id="diplomaEyebrow">Diplom</p>
+              <h2 class="hero-block__name hero-block__name--small" id="diplomaTitle">Diplom und Anlagen</h2>
+              <p class="hero-block__summary" id="diplomaSummary"></p>
+            </div>
+
+            <div class="hero-monogram" id="heroMonogram" aria-hidden="true">AL</div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <p class="section-label" id="diplomaOverviewLabel">Uberblick</p>
+            <h3 id="diplomaOverviewTitle">Worum es in den Unterlagen geht</h3>
+          </div>
+          <div class="entry-list" id="diplomaOverviewCards"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <p class="section-label" id="diplomaDocumentsLabel">PDF</p>
+            <h3 id="diplomaDocumentsTitle">Originaldokumente</h3>
+          </div>
+          <div class="document-grid" id="diplomaDocuments"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="resume-data.js"></script>
+  <script src="diploma.js"></script>
+</body>
+</html>
