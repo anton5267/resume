@@ -11,6 +11,13 @@ function setText(id, value) {
   }
 }
 
+function setHtml(id, value) {
+  const node = byId(id);
+  if (node) {
+    node.innerHTML = value || "";
+  }
+}
+
 function createChip(text) {
   const chip = document.createElement("span");
   chip.className = "chip";
@@ -43,109 +50,85 @@ function createContactItem(item) {
   return wrap;
 }
 
-function createEntryCard(item) {
+function createMetaPill(item) {
+  const pill = document.createElement("article");
+  pill.className = "meta-pill meta-pill--short";
+
+  const value = document.createElement("span");
+  value.className = "meta-pill__value";
+  value.textContent = item.value;
+
+  const label = document.createElement("span");
+  label.className = "meta-pill__label";
+  label.textContent = item.label;
+
+  pill.append(value, label);
+  return pill;
+}
+
+function createCompactProject(item) {
   const card = document.createElement("article");
-  card.className = "entry-card";
+  card.className = "short-stack-item";
 
-  const top = document.createElement("div");
-  top.className = "entry-card__top";
-
-  const titleWrap = document.createElement("div");
   const title = document.createElement("h4");
-  title.className = "entry-card__title";
+  title.className = "short-stack-item__title";
   title.textContent = item.title;
 
   const subtitle = document.createElement("p");
-  subtitle.className = "entry-card__subtitle";
+  subtitle.className = "short-stack-item__subtitle";
   subtitle.textContent = item.subtitle;
 
-  titleWrap.append(title, subtitle);
-
-  const period = document.createElement("p");
-  period.className = "entry-card__period";
-  period.textContent = item.period;
-
-  top.append(titleWrap, period);
-
   const text = document.createElement("p");
-  text.className = "entry-card__text";
+  text.className = "short-stack-item__text";
   text.textContent = item.text;
 
-  card.append(top, text);
-
-  if (item.bullets?.length) {
-    const list = document.createElement("ul");
-    list.className = "entry-card__list";
-
-    item.bullets.forEach((bullet) => {
-      const li = document.createElement("li");
-      li.textContent = bullet;
-      list.appendChild(li);
-    });
-
-    card.appendChild(list);
-  }
-
-  if (item.link?.href) {
-    const link = document.createElement("a");
-    link.className = "entry-link";
-    link.href = item.link.href;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.textContent = item.link.label || item.link.href;
-    card.appendChild(link);
-  }
-
+  card.append(title, subtitle, text);
   return card;
 }
 
-function createDocumentCard(item) {
-  const asset = appData.assets.documents[item.asset];
-  const card = document.createElement("article");
-  card.className = "document-card";
-
-  const top = document.createElement("div");
-  top.className = "document-card__top";
-
-  const badge = document.createElement("span");
-  badge.className = "document-card__badge";
-  badge.textContent = item.badge;
+function createCompactSkill(group) {
+  const wrap = document.createElement("section");
+  wrap.className = "short-tag-card";
 
   const title = document.createElement("h4");
-  title.className = "document-card__title";
+  title.className = "short-tag-card__title";
+  title.textContent = group.title;
+
+  const tags = document.createElement("div");
+  tags.className = "tag-list tag-list--compact";
+  group.items.forEach((item) => {
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = item;
+    tags.appendChild(tag);
+  });
+
+  wrap.append(title, tags);
+  return wrap;
+}
+
+function createCompactEducation(item) {
+  const card = document.createElement("article");
+  card.className = "short-timeline__item";
+
+  const top = document.createElement("div");
+  top.className = "short-timeline__top";
+
+  const title = document.createElement("h4");
+  title.className = "short-timeline__title";
   title.textContent = item.title;
 
-  top.append(badge, title);
+  const period = document.createElement("span");
+  period.className = "short-timeline__period";
+  period.textContent = item.period;
 
-  const description = document.createElement("p");
-  description.className = "document-card__text";
-  description.textContent = item.description;
+  top.append(title, period);
 
-  const actions = document.createElement("div");
-  actions.className = "document-card__actions";
+  const text = document.createElement("p");
+  text.className = "short-timeline__text";
+  text.textContent = item.text;
 
-  const open = document.createElement("a");
-  open.className = "button button--ghost button--small";
-  open.href = asset.src;
-  open.target = "_blank";
-  open.rel = "noreferrer";
-  open.textContent = item.openLabel;
-
-  const download = document.createElement("a");
-  download.className = "button button--primary button--small";
-  download.href = asset.src;
-  download.download = "";
-  download.textContent = item.downloadLabel;
-
-  actions.append(open, download);
-
-  const viewer = document.createElement("iframe");
-  viewer.className = "document-card__viewer";
-  viewer.src = `${asset.src}#toolbar=0&view=FitH`;
-  viewer.title = item.title;
-  viewer.loading = "lazy";
-
-  card.append(top, description, actions, viewer);
+  card.append(top, text);
   return card;
 }
 
@@ -165,6 +148,21 @@ function renderSimpleList(id, items) {
   }
 
   target.replaceChildren(...items.map((item) => createChip(item)));
+}
+
+function renderBullets(id, items) {
+  const target = byId(id);
+  if (!target) {
+    return;
+  }
+
+  target.replaceChildren(
+    ...items.map((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      return li;
+    })
+  );
 }
 
 function getStoredLanguage() {
@@ -203,7 +201,6 @@ function setupPhotoAndMonogram(name, photoAlt) {
   const photo = byId("profilePhoto");
   const fallback = byId("photoFallback");
   const initials = byId("photoInitials");
-  const heroMonogram = byId("heroMonogram");
   const photoData = appData.assets.photo;
   const monogram =
     photoData?.initials ||
@@ -218,10 +215,6 @@ function setupPhotoAndMonogram(name, photoAlt) {
 
   if (initials) {
     initials.textContent = monogram;
-  }
-
-  if (heroMonogram) {
-    heroMonogram.textContent = monogram;
   }
 
   if (!photo || !photoData?.src) {
@@ -305,36 +298,47 @@ function updateSeo(title, description, path, language) {
 function applyLanguage(language) {
   const translation = appData.translations[language] || appData.translations[appData.settings.defaultLanguage];
   const basics = translation.basics;
-  const diploma = translation.diploma;
   const meta = translation.meta;
+  const shortCv = translation.shortCv;
 
-  updateSeo(diploma.pageTitle || meta.pageTitle, diploma.pageDescription, "diploma.html", meta.htmlLang || language);
+  updateSeo(shortCv.pageTitle, shortCv.pageDescription, "short-cv.html", meta.htmlLang || language);
 
   setText("toolbarEyebrow", meta.toolbarEyebrow);
-  setText("toolbarTitle", diploma.toolbarTitle);
+  setText("toolbarTitle", shortCv.toolbarTitle);
   setText("navResume", meta.navResume);
   setText("navShortCv", meta.navShortCv);
   setText("navDiploma", meta.navDiploma);
-  setText("diplomaSidebarRole", diploma.sidebarRole);
-  setText("diplomaFactsLabel", diploma.factsLabel);
-  setText("diplomaDocsLabel", diploma.docsLabel);
-  setText("diplomaEyebrow", diploma.eyebrow);
-  setText("diplomaTitle", diploma.title);
-  setText("diplomaSummary", diploma.summary);
-  setText("diplomaOverviewLabel", diploma.overviewLabel);
-  setText("diplomaOverviewTitle", diploma.overviewTitle);
-  setText("diplomaDocumentsLabel", diploma.documentsLabel);
-  setText("diplomaDocumentsTitle", diploma.documentsTitle);
+  setText("shortEyebrow", shortCv.eyebrow);
+  setText("shortName", basics.name);
+  setText("shortTitle", shortCv.title);
+  setText("shortSummary", shortCv.summary);
+  setText("shortAvailability", shortCv.availability);
+  setText("shortContactsLabel", shortCv.contactsLabel);
+  setText("shortProfileLabel", shortCv.profileLabel);
+  setText("shortProjectsLabel", shortCv.projectsLabel);
+  setText("shortSkillsLabel", shortCv.skillsLabel);
+  setText("shortEducationLabel", shortCv.educationLabel);
+  setText("shortLanguagesLabel", shortCv.languagesLabel);
+  setHtml("shortFooterNoteText", shortCv.footerNoteHtml);
+  setText("shortPrintEducation", shortCv.printEducation);
 
-  renderList("diplomaFacts", diploma.facts, createContactItem);
-  renderSimpleList("diplomaDocChips", diploma.docChips);
-  renderList("diplomaOverviewCards", diploma.overviewCards, createEntryCard);
-  renderList("diplomaDocuments", diploma.documents, createDocumentCard);
+  renderList("shortContacts", shortCv.contacts, createContactItem);
+  renderList("shortHighlights", shortCv.highlights, createMetaPill);
+  renderBullets("shortProfilePoints", shortCv.profilePoints);
+  renderList("shortProjects", shortCv.projects, createCompactProject);
+  renderList("shortSkills", shortCv.skills, createCompactSkill);
+  renderList("shortEducation", shortCv.education, createCompactEducation);
+  renderSimpleList("shortLanguages", shortCv.languages);
 
   const profileLink = byId("profileLink");
   if (profileLink) {
     profileLink.href = appData.assets.profileLink;
     profileLink.textContent = meta.profileLink;
+  }
+
+  const downloadPdf = byId("downloadPdf");
+  if (downloadPdf) {
+    downloadPdf.textContent = meta.pdfButton;
   }
 
   setupPhotoAndMonogram(basics.name, basics.photoAlt);
@@ -361,6 +365,12 @@ function init() {
   }
 
   bindLanguageSwitcher();
+
+  const downloadPdf = byId("downloadPdf");
+  if (downloadPdf) {
+    downloadPdf.addEventListener("click", () => window.print());
+  }
+
   applyLanguage(getStoredLanguage());
 }
 

@@ -1,70 +1,70 @@
 # Resume Website
 
-Статичний сайт-резюме для Anton Lyshtva у форматі `Lebenslauf`, заточений під друк у PDF, двомовність `UA / DE`, універсальну подачу в Німеччині та публікацію на GitHub.
+Статичний bilingual-сайт Антона Лиштви для подачі в Німеччині. Проєкт не має бекенду, працює як звичайний `HTML/CSS/JS` сайт і деплоїться через GitHub Pages.
 
-## Що готово
+Production:
 
-- макет з лівою сірою панеллю, як у PDF-референсі
-- контент уже заповнений як універсальний профіль під `Ausbildung` або `entry-level work`
-- перемикач мови `Українська / Deutsch`
-- окрема сторінка `diploma.html` з вбудованими PDF диплома
-- окремий шаблон `anschreiben-template.html` для німецького супровідного листа
-- є кнопка `PDF herunterladen` для експорту через друк браузера
-- структура без фреймворків, тому сайт можна просто залити в репозиторій `resume`
+- `https://anton5267.github.io/resume/`
+- `https://anton5267.github.io/resume/short-cv.html`
+- `https://anton5267.github.io/resume/diploma.html`
+- `https://anton5267.github.io/resume/anschreiben-template.html`
 
-## Файли
+## Структура
 
-- `index.html` — структура сторінки
-- `diploma.html` — окрема сторінка з дипломом
-- `anschreiben-template.html` — шаблон супровідного листа німецькою
-- `styles.css` — web + print стилі
-- `resume-data.js` — усі дані резюме, переклади й дані диплома
-- `script.js` — рендеринг головної сторінки
+- `index.html` — повне резюме `UA / DE`
+- `short-cv.html` — коротке односторінкове CV `UA / DE`
+- `diploma.html` — сторінка з PDF диплома IT Step Academy
+- `anschreiben-template.html` — окремий шаблон супровідного листа німецькою
+- `resume-data.js` — головне джерело даних і перекладів
+- `script.js` — рендеринг повного CV
+- `short-cv.js` — рендеринг короткого CV
 - `diploma.js` — рендеринг сторінки диплома
-- `assets/diploma/` — PDF файли диплома
+- `styles.css` — web + mobile + print стилі
+- `assets/` — фото, preview і PDF
 
-## Як додати фото
+## Що редагувати
 
-1. Створи папку `assets`, якщо її ще немає
-2. Поклади туди файл `profile-photo.jpg`
-3. Якщо файл називається інакше, зміни шлях у `resume-data.js`
+Основний контент редагується в `resume-data.js`:
 
-Поки фото немає, на сайті автоматично показується блок з ініціалами.
+- контакти
+- тексти `UA / DE`
+- освіта
+- проєкти
+- навички
+- коротке CV
+- тексти сторінки диплома
 
-## Як запустити локально
+Фото лежить у `assets/profile-photo.jpg`.
 
-Можна просто відкрити `index.html` у браузері.
+## PDF
 
-Або підняти простий сервер:
+На публічних сторінках є кнопка `PDF herunterladen` / `Завантажити PDF`.
+
+Схема однакова:
+
+1. Відкрити потрібну сторінку
+2. Натиснути кнопку PDF
+3. У діалозі друку вибрати `Save as PDF`
+
+`short-cv.html` зібраний як окрема коротка print-first версія.
+
+## Локальний запуск
+
+Можна просто відкрити `index.html` у браузері або підняти локальний сервер:
 
 ```powershell
 python -m http.server 8080
 ```
 
-Після цього відкрити `http://localhost:8080`.
+Після цього:
 
-Головні сторінки:
+- `http://127.0.0.1:8080/`
+- `http://127.0.0.1:8080/short-cv.html`
+- `http://127.0.0.1:8080/diploma.html`
+- `http://127.0.0.1:8080/anschreiben-template.html`
 
-- `http://localhost:8080/`
-- `http://localhost:8080/diploma.html`
-- `http://localhost:8080/anschreiben-template.html`
+## Деплой
 
-## Як залити в GitHub
+GitHub Pages деплоїться через `.github/workflows/deploy-pages.yml`.
 
-1. Створи новий репозиторій `resume`
-2. Завантаж у нього ці файли
-3. У `Settings -> Pages` обери `GitHub Actions` як source
-
-У репозиторії вже є workflow `.github/workflows/deploy-pages.yml`, який автоматично задеплоїть сайт після пушу в `main`.
-
-## Як зберегти PDF
-
-1. Відкрий сайт
-2. Натисни `PDF herunterladen`
-3. У вікні друку обери `Save as PDF`
-
-## Що ще варто зробити
-
-- підкласти нормальне фото замість fallback
-- перед відправкою редагувати плейсхолдери в `anschreiben-template.html` під конкретну компанію
-- після публікації додати посилання на GitHub Pages у заявку
+Після пушу в `main` сайт оновлюється автоматично.

@@ -3,6 +3,12 @@ window.resumeData = {
     defaultLanguage: "de",
     storageKey: "resume-language"
   },
+  site: {
+    baseUrl: "https://anton5267.github.io/resume",
+    themeColor: "#0f68d8",
+    socialImage: "https://anton5267.github.io/resume/assets/social-preview.png",
+    author: "Anton Lyshtva"
+  },
   assets: {
     photo: {
       src: "assets/profile-photo.jpg",
@@ -23,40 +29,45 @@ window.resumeData = {
       meta: {
         htmlLang: "de",
         pageTitle: "Anton Lyshtva | Junior Software Developer",
+        pageDescription:
+          "Bilingualer Lebenslauf von Anton Lyshtva fur Ausbildung oder Junior-Positionen in Deutschland.",
         toolbarEyebrow: "Resume / Website / PDF",
         toolbarTitle: "Junior Software Developer | Deutschland",
         navResume: "Lebenslauf",
+        navShortCv: "Kurzprofil",
         navDiploma: "Diplom",
         profileLink: "GitHub Profil",
         pdfButton: "PDF herunterladen",
         sidebarContact: "Kontakt",
         sidebarLanguages: "Sprachen",
-        sidebarStrengths: "Stärken",
+        sidebarStrengths: "Starken",
         sidebarInterests: "Interessen",
         objectiveLabel: "Profil",
         objectiveTitle: "Bewerbungsprofil",
         educationLabel: "Bildung",
         educationTitle: "Ausbildung und Bildungsweg",
         projectsLabel: "Projekte",
-        projectsTitle: "Ausgewählte technische Arbeiten",
+        projectsTitle: "Ausgewahlte technische Arbeiten",
         skillsLabel: "Kenntnisse",
-        skillsTitle: "Technischer Stack"
+        skillsTitle: "Technischer Stack",
+        footerNoteHtml:
+          "Das Foto liegt unter <code>assets/profile-photo.jpg</code>. Fur PDF einfach auf <strong>PDF herunterladen</strong> klicken und im Browser <strong>Save as PDF</strong> wahlen. Fur kurze Bewerbungen gibt es <code>short-cv.html</code>, fur Anschreiben <code>anschreiben-template.html</code>."
       },
       basics: {
         eyebrow: "Lebenslauf",
         name: "Anton Lyshtva",
         title: "Junior Software Developer / Ausbildung oder Berufseinstieg",
         sidebarRole:
-          "Junior Software Developer mit Fokus auf Webentwicklung, .NET und eigenständige Produktprojekte.",
+          "Junior Software Developer mit Fokus auf Webentwicklung, .NET, produktnahe Projekte und einen schnellen praktischen Einstieg.",
         summary:
-          "Junior Software Developer mit praktischer Erfahrung in Python, C++, C#, JavaScript, TypeScript, React und ASP.NET Core. Durch Ausbildung, eigene GitHub-Projekte und kontinuierliches Selbststudium habe ich Webanwendungen, Echtzeitfunktionen, PWAs und Cloud-nahe Deployments umgesetzt.",
+          "Junior Software Developer mit Praxis in Python, C++, C#, JavaScript, TypeScript, React und ASP.NET Core. In Ausbildung, eigenen GitHub-Projekten und kontinuierlichem Selbststudium habe ich Webanwendungen, Echtzeitfunktionen, PWAs und cloud-nahe Deployments umgesetzt.",
         objective:
-          "Ich komme aus der Ukraine und lebe derzeit in Deutschland. Hier integriere ich mich aktiv, lerne Deutsch weiter und entwickle meine technischen Fähigkeiten durch Ausbildung, eigene Projekte und kontinuierliches Selbststudium aus. Ich bin ab sofort bereit, meine Kenntnisse in einer Ausbildung oder in einer Junior-Position einzubringen, weiterzulernen und mein Wissen im Team verständlich weiterzugeben.",
+          "Ich komme aus der Ukraine und lebe aktuell in Deutschland. Hier integriere ich mich aktiv, lerne Deutsch weiter und baue meine technischen Fahigkeiten durch Ausbildung, eigene Projekte und kontinuierliches Selbststudium aus. Ich bin ab sofort bereit, meine Kenntnisse in einer Ausbildung oder Junior-Position einzubringen, schnell Verantwortung zu ubernehmen und mich im Team fachlich wie sprachlich weiterzuentwickeln.",
         photoAlt: "Foto von Anton Lyshtva",
         contacts: [
           { label: "Geburtsdatum", value: "30.08.2006" },
-          { label: "Adresse", value: "Am Jödebrunnen 3, 38118 Braunschweig" },
-          { label: "Verfügbarkeit", value: "ab sofort verfügbar" },
+          { label: "Adresse", value: "Am Jodebrunnen 3, 38118 Braunschweig" },
+          { label: "Verfugbarkeit", value: "ab sofort verfugbar" },
           { label: "Telefon DE", value: "+49 1520 5379547", href: "tel:+4915205379547" },
           { label: "Telefon UA", value: "+380 95 723 4102", href: "tel:+380957234102" },
           { label: "E-Mail", value: "antonlistva47@gmail.com", href: "mailto:antonlistva47@gmail.com" },
@@ -64,27 +75,27 @@ window.resumeData = {
         ]
       },
       highlights: [
-        { value: "14", label: "öffentliche GitHub-Repos" },
-        { value: "Ab sofort", label: "verfügbar für Ausbildung oder Einstieg" },
-        { value: "Deutsch A2", label: "B1-Prüfung geplant, lerne aktiv weiter" },
-        { value: "React + .NET", label: "stärkste Praxisfelder" }
+        { value: "Braunschweig", label: "aktueller Standort in Deutschland" },
+        { value: "Ab sofort", label: "bereit fur Ausbildung oder Einstieg" },
+        { value: "Deutsch A2", label: "B1-Prufung geplant, lerne aktiv weiter" },
+        { value: "React + .NET", label: "starkste Praxisfelder" }
       ],
       languages: [
         "Ukrainisch - Muttersprache",
         "Russisch - C1",
-        "Deutsch - offiziell A2, B1-Prüfung geplant, lerne aktiv weiter"
+        "Deutsch - offiziell A2, B1-Prufung geplant, lerne aktiv weiter"
       ],
       strengths: [
         "Verantwortungsbewusstsein",
         "Teamarbeit",
         "Analytisches Denken",
-        "Kreative Problemlösung",
+        "Strukturierte Problemlosung",
         "Hohe Detailgenauigkeit",
-        "Wissen verständlich vermitteln"
+        "Wissen klar und verstandlich weitergeben"
       ],
       interests: [
         "Programmierung",
-        "Automotive & Technik",
+        "Automotive und Technik",
         "Volleyball",
         "Musik",
         "Reisen",
@@ -93,7 +104,7 @@ window.resumeData = {
       education: [
         {
           title: "IT Step Academy",
-          subtitle: "Software Development, Kyiv, вул. Жилянська 128/28",
+          subtitle: "Software Development, Kyiv, vul. Zhylianska 128/28",
           period: "10/2021 - 02/2026",
           text:
             "Fachliche Ausbildung im Bereich Softwareentwicklung mit Abschlussnote 11 (Excellent). Schwerpunkt auf moderner Webentwicklung, objektorientierter Programmierung und Cloud-/Container-Technologien.",
@@ -108,39 +119,39 @@ window.resumeData = {
           }
         },
         {
-          title: "Radomyshlskyi Opornyi Litsei Nr. 2, Region Zhytomyr",
-          subtitle: "Vollständige allgemeine Sekundarschulbildung",
+          title: "Радомишльський опорний ліцей №2 Житомирської області",
+          subtitle: "Vollstandige allgemeine Sekundarschulbildung",
           period: "06/2024",
           text:
-            "Abschlusszeugnis der vollständigen allgemeinen Sekundarschulbildung. Das Zeugnis und die Fächeranlage sind vorhanden und können bei Bedarf vorgelegt werden.",
+            "Abschlusszeugnis der vollstandigen allgemeinen Sekundarschulbildung. Zeugnis und Facheranlage sind vorhanden und konnen bei Bedarf vorgelegt werden.",
           bullets: [
-            "Offizielle Bezeichnung laut Zeugnis: Радомишльський опорний ліцей №2 Житомирської області.",
+            "Offizielle Bezeichnung laut Zeugnis unverandert ubernommen.",
             "Zeugnisdatum: 14.06.2024."
           ]
         },
         {
-          title: "KZ \"Radomyshlska Schule der Künste\"",
-          subtitle: "Außerschulische Kunstausbildung, Akkordeon",
+          title: "КЗ \"Радомишльська школа мистецтв\"",
+          subtitle: "Ausserschulische Kunstausbildung, Akkordeon",
           period: "09/2015 - 05/2022",
           text:
-            "Abgeschlossene musikalische Ausbildung mit Schwerpunkt Akkordeon. Das Zeugnis und die ergänzende Übersicht sind vorhanden und auf Anfrage verfügbar.",
+            "Abgeschlossene musikalische Ausbildung mit Schwerpunkt Akkordeon. Zeugnis und Erganzung sind vorhanden und auf Anfrage verfugbar, werden aber nicht offentlich publiziert.",
           bullets: [
             "Fachrichtung: Akkordeon.",
-            "Förderte Disziplin, Auftrittssicherheit und langfristiges Lernen."
+            "Starkte Disziplin, Auftrittssicherheit und langfristiges Lernen."
           ]
         }
       ],
       projects: [
         {
           title: "Boardly",
-          subtitle: "Kollaborative Kanban-Plattform, Trello-ähnlich",
+          subtitle: "Kollaborative Kanban-Plattform, Trello-ahnlich",
           period: "GitHub Teamprojekt",
           text:
-            "Webanwendung für Aufgaben- und Board-Management mit Rollen, Drag-and-Drop-Karten, Profilfunktionen und Echtzeit-Updates.",
+            "Webanwendung fur Aufgaben- und Board-Management mit Rollen, Drag-and-Drop-Karten, Profilfunktionen und Echtzeit-Updates.",
           bullets: [
             "Backend mit Python, Django, Django REST Framework, Channels, Djoser und PostgreSQL.",
             "Frontend mit React, TypeScript, Redux Toolkit, React Router und Axios.",
-            "Docker-Setup, GitHub Actions und testbare Projektstruktur für Teamarbeit."
+            "Docker-Setup, GitHub Actions und testbare Projektstruktur fur Teamarbeit."
           ],
           tags: ["Python", "Django", "DRF", "React", "TypeScript", "PostgreSQL", "Docker"],
           link: {
@@ -153,10 +164,10 @@ window.resumeData = {
           subtitle: "Multiplayer Chess Platform",
           period: "Eigenes GitHub-Projekt",
           text:
-            "Moderne Schachplattform mit Mehrspieler-Modus, Bot-Spiel und fünfsprachiger Benutzeroberfläche.",
+            "Moderne Schachplattform mit Mehrspieler-Modus, Bot-Spiel und funfsprachiger Benutzeroberflache.",
           bullets: [
-            "Aufgebaut mit ASP.NET Core MVC, C#, Entity Framework Core und SignalR für Echtzeitkommunikation.",
-            "Deployment über Azure Web App mit öffentlicher Demo.",
+            "Aufgebaut mit ASP.NET Core MVC, C#, Entity Framework Core und SignalR fur Echtzeitkommunikation.",
+            "Deployment uber Azure Web App mit offentlicher Demo.",
             "Zeigt Praxis in Full-Stack-.NET, UI-Struktur und interaktiver Benutzerlogik."
           ],
           tags: ["ASP.NET Core MVC", "C#", "SignalR", "EF Core", "Azure"],
@@ -167,13 +178,13 @@ window.resumeData = {
         },
         {
           title: "Electro Study Lab",
-          subtitle: "Interaktive PWA für Lern- und Prüfungsszenarien",
+          subtitle: "Interaktive PWA fur Lern- und Prufungsszenarien",
           period: "Eigenes GitHub-Projekt",
           text:
-            "Statischer, produktionsnah strukturierter Lernclient mit Theorie, Quiz, Prüfungsmodus, Analytik und Offline-Unterstützung.",
+            "Statischer, produktionsnah strukturierter Lernclient mit Theorie, Quiz, Prufungsmodus, Analytik und Offline-Unterstutzung.",
           bullets: [
             "JavaScript-App mit mehrsprachigem Content, Import/Export, Service Worker und GitHub Pages Deployment.",
-            "Enthält Qualitäts- und Security-Workflows inklusive Accessibility-, Smoke- und Visual-Regression-Checks.",
+            "Enthalt Quality- und Security-Workflows inklusive Accessibility-, Smoke- und Visual-Regression-Checks.",
             "Demonstriert saubere Projektstruktur, QA-Denken und Fokus auf reale Nutzbarkeit."
           ],
           tags: ["JavaScript", "PWA", "GitHub Pages", "CI", "Accessibility", "Offline"],
@@ -201,25 +212,107 @@ window.resumeData = {
           items: ["Git", "GitHub", "UML", "Design Patterns", "Teamarbeit", "CI/CD-Basis"]
         }
       ],
+      shortCv: {
+        pageTitle: "Anton Lyshtva | Kurzprofil",
+        pageDescription:
+          "Kompakte Ein-Seiten-Bewerbung von Anton Lyshtva fur Ausbildung oder Junior-Positionen in Deutschland.",
+        toolbarTitle: "Kurzprofil | One-Page CV",
+        eyebrow: "Kurzprofil",
+        title: "Junior Software Developer / Ausbildung oder Einstieg",
+        summary:
+          "Aus der Ukraine, aktuell in Deutschland, technisch fokussiert auf React, ASP.NET Core und produktnahe Webanwendungen. Ab sofort verfugbar und bereit fur einen schnellen fachlichen Einstieg.",
+        availability: "Braunschweig, Deutschland · ab sofort verfugbar",
+        contactsLabel: "Kontakt",
+        profileLabel: "Profil",
+        projectsLabel: "Top-Projekte",
+        skillsLabel: "Kernstack",
+        educationLabel: "Bildung",
+        languagesLabel: "Sprachen",
+        contacts: [
+          { label: "Standort", value: "Braunschweig, Deutschland" },
+          { label: "Start", value: "ab sofort verfugbar" },
+          { label: "Telefon", value: "+49 1520 5379547", href: "tel:+4915205379547" },
+          { label: "E-Mail", value: "antonlistva47@gmail.com", href: "mailto:antonlistva47@gmail.com" },
+          { label: "GitHub", value: "github.com/anton5267", href: "https://github.com/anton5267" }
+        ],
+        highlights: [
+          { value: "React + .NET", label: "praktischer Schwerpunkt" },
+          { value: "Deutsch A2", label: "B1-Prufung geplant" },
+          { value: "GitHub", label: "eigene Projekte und Teamarbeit" }
+        ],
+        profilePoints: [
+          "Ich lebe aktuell in Deutschland und integriere mich hier aktiv.",
+          "Deutsch lerne ich konsequent weiter und suche bewusst einen Einstieg uber Ausbildung oder Junior-Rolle mit realen Entwicklungsaufgaben."
+        ],
+        projects: [
+          {
+            title: "Boardly",
+            subtitle: "Kanban-Plattform mit Django, React, TypeScript und PostgreSQL",
+            text: "Teamprojekt fur Aufgabenmanagement mit Rollen und Echtzeit-Updates."
+          },
+          {
+            title: "Chess-master55",
+            subtitle: "ASP.NET Core MVC, SignalR, EF Core, Azure",
+            text: "Eigene Multiplayer-Schachplattform mit Echtzeitkommunikation und offentlicher Demo."
+          }
+        ],
+        skills: [
+          {
+            title: "Sprachen",
+            items: ["C++", "C#", "Python", "JavaScript", "TypeScript"]
+          },
+          {
+            title: "Frameworks",
+            items: ["React", "ASP.NET Core", "EF Core", "Django REST Framework"]
+          },
+          {
+            title: "Tools",
+            items: ["Git", "Docker", "PostgreSQL", "Azure", "Kubernetes-Basis"]
+          }
+        ],
+        education: [
+          {
+            title: "IT Step Academy",
+            period: "2021 - 2026",
+            text: "Software Development, Kyiv · Abschlussnote 11."
+          },
+          {
+            title: "Schule 2024 + Musikschule",
+            period: "2015 - 2024",
+            text: "Sekundarschulabschluss 2024, Musikschule Akkordeon bis 2022."
+          }
+        ],
+        languages: [
+          "Ukrainisch - Muttersprache",
+          "Russisch - C1",
+          "Deutsch - A2, B1-Prufung geplant"
+        ],
+        printEducation:
+          "Bildung: IT Step Academy, Software Development (2021 - 2026, Abschlussnote 11) sowie Schulabschluss 2024 und Musikschule Akkordeon bis 2022.",
+        footerNoteHtml:
+          "Vollstandiger Lebenslauf, Diplomseite und Anschreiben-Vorlage sind uber die Navigation erreichbar. Diese Seite ist bewusst auf eine druckbare Kurzfassung reduziert."
+      },
       diploma: {
         pageTitle: "Anton Lyshtva | Diplom",
-        toolbarTitle: "Diplom & Unterlagen",
+        pageDescription:
+          "Diplom und Anlagen der IT Step Academy von Anton Lyshtva mit eingebetteten PDFs und Online-Verifikation.",
+        toolbarTitle: "Diplom und Unterlagen",
         eyebrow: "Diplom",
         title: "Diplom und Anlagen",
         summary:
-          "Hier sind die PDF-Versionen meines Diploms der IT Step Academy sowie die Anlagen mit Fächerübersicht und Abschlussnote. Verfügbar sind die ukrainische Originalfassung und eine englische Übersetzung. Schul- und Musikschulzeugnisse werden im Lebenslauf erwähnt und bei Bedarf separat vorgelegt, aber nicht öffentlich veröffentlicht.",
+          "Hier sind die PDF-Versionen meines Diploms der IT Step Academy sowie die Anlagen mit Fachubersicht und Abschlussnote. Verfugbar sind die ukrainische Originalfassung und eine englische Ubersetzung. Schul- und Musikschulzeugnisse werden im Lebenslauf erwahnt und bei Bedarf separat vorgelegt, aber nicht offentlich veroffentlicht.",
         sidebarRole:
           "Nachweis meiner IT Step Academy Ausbildung im Bereich Software Development inklusive Anlage mit den wichtigsten Fachmodulen und Bewertungen.",
         factsLabel: "Fakten",
         docsLabel: "Dokumente",
-        overviewLabel: "Überblick",
+        overviewLabel: "Uberblick",
         overviewTitle: "Was in den Unterlagen enthalten ist",
         documentsLabel: "PDF",
-        documentsTitle: "Originale und Übersetzung",
+        documentsTitle: "Originale und Ubersetzung",
         facts: [
           { label: "Diplom-Nr.", value: "KV-025057" },
           { label: "Institution", value: "IT Step Academy" },
-          { label: "Adresse", value: "Kyiv, вул. Жилянська 128/28" },
+          { label: "Adresse", value: "Kyiv, vul. Zhylianska 128/28" },
           { label: "Fachrichtung", value: "Software Development" },
           { label: "Zeitraum", value: "20.10.2021 - 27.02.2026" },
           { label: "Abschlussnote", value: "11 (Excellent)" },
@@ -232,7 +325,7 @@ window.resumeData = {
         docChips: [
           "Ukrainisches Original",
           "Diploma Supplement",
-          "Englische Übersetzung",
+          "Englische Ubersetzung",
           "Online-Verifikation",
           "Schule/Musikschule auf Anfrage"
         ],
@@ -242,7 +335,7 @@ window.resumeData = {
             subtitle: "IT Step Academy",
             period: "2021 - 2026",
             text:
-              "Das Hauptdokument bestätigt den erfolgreichen Abschluss der Fachausbildung im Bereich Software Development in Kyiv.",
+              "Das Hauptdokument bestatigt den erfolgreichen Abschluss der Fachausbildung im Bereich Software Development in Kyiv.",
             bullets: [
               "Abschlussdatum laut Dokument: 27.02.2026.",
               "Diplomnummer: KV-025057.",
@@ -266,23 +359,23 @@ window.resumeData = {
             subtitle: "Schule und Musikschule",
             period: "auf Anfrage",
             text:
-              "Weitere Bildungsnachweise aus der allgemeinen Schulbildung und der Musikschule sind vorhanden, werden aus Datenschutzgründen aber nicht öffentlich eingebettet.",
+              "Weitere Bildungsnachweise aus der allgemeinen Schulbildung und der Musikschule sind vorhanden, werden aus Datenschutzgrunden aber nicht offentlich eingebettet.",
             bullets: [
               "Allgemeine Schulbildung: Abschluss 2024.",
               "Musikschule mit Schwerpunkt Akkordeon.",
-              "Unterlagen können bei Bedarf separat vorgelegt werden."
+              "Unterlagen konnen bei Bedarf separat vorgelegt werden."
             ]
           },
           {
-            title: "Echtheitsprüfung",
+            title: "Echtheitsprufung",
             subtitle: "Offizielle Online-Verifikation",
             period: "IT Step",
             text:
-              "Die Echtheit des Diploms kann über das offizielle Verifikationsportal der Akademie geprüft werden.",
+              "Die Echtheit des Diploms kann uber das offizielle Verifikationsportal der Akademie gepruft werden.",
             bullets: [
               "Portal: diploma.itstep.org.",
-              "Nützlich für Recruiter und Unternehmen.",
-              "Unterstützt die Glaubwürdigkeit der eingereichten Unterlagen."
+              "Nutzlich fur Recruiter und Unternehmen.",
+              "Unterstutzt die Glaubwurdigkeit der eingereichten Unterlagen."
             ],
             link: {
               label: "Zur Verifikation",
@@ -294,9 +387,9 @@ window.resumeData = {
           {
             asset: "ukrainian",
             badge: "UA",
-            title: "Диплом українською",
-            description: "Оригінальна українська версія диплому та додатка.",
-            openLabel: "PDF öffnen",
+            title: "Diplom auf Ukrainisch",
+            description: "Originale ukrainische Fassung des Diploms und der Anlage.",
+            openLabel: "PDF offnen",
             downloadLabel: "PDF herunterladen"
           },
           {
@@ -314,9 +407,12 @@ window.resumeData = {
       meta: {
         htmlLang: "uk",
         pageTitle: "Антон Лиштва | Junior Software Developer",
+        pageDescription:
+          "Двомовне резюме Антона Лиштви для Ausbildung або стартових технічних ролей у Німеччині.",
         toolbarEyebrow: "Resume / Website / PDF",
         toolbarTitle: "Junior Software Developer | Німеччина",
         navResume: "Резюме",
+        navShortCv: "Коротке CV",
         navDiploma: "Диплом",
         profileLink: "GitHub профіль",
         pdfButton: "Завантажити PDF",
@@ -331,22 +427,24 @@ window.resumeData = {
         projectsLabel: "Проєкти",
         projectsTitle: "Вибрані технічні роботи",
         skillsLabel: "Навички",
-        skillsTitle: "Технічний стек"
+        skillsTitle: "Технічний стек",
+        footerNoteHtml:
+          "Фото лежить у <code>assets/profile-photo.jpg</code>. Для PDF просто натисни <strong>Завантажити PDF</strong> і в браузері вибери <strong>Save as PDF</strong>. Для короткої заявки є <code>short-cv.html</code>, для супровідного листа <code>anschreiben-template.html</code>."
       },
       basics: {
         eyebrow: "Резюме",
         name: "Антон Лиштва",
         title: "Junior Software Developer / Ausbildung або старт роботи",
         sidebarRole:
-          "Junior Software Developer із фокусом на web development, .NET та власні продуктні проєкти.",
+          "Junior Software Developer із фокусом на web development, .NET, власні продуктні проєкти та швидкий практичний старт.",
         summary:
           "Junior-розробник із практичним досвідом у Python, C++, C#, JavaScript, TypeScript, React та ASP.NET Core. Через навчання, власні GitHub-проєкти та постійне самонавчання я реалізовував вебзастосунки, realtime-функціонал, PWA та cloud-ready деплой.",
         objective:
-          "Я з України і зараз проживаю в Німеччині. Тут я поступово інтегруюся, активно вивчаю німецьку мову та паралельно розвиваю технічні навички через навчання, власні проєкти й постійну практику. Я вже готовий починати, розвиватися далі в Ausbildung або на стартовій технічній позиції, приносити користь команді та зрозуміло ділитися знаннями з іншими.",
+          "Я з України і зараз проживаю в Німеччині. Тут я поступово інтегруюся, активно вивчаю німецьку мову та паралельно розвиваю технічні навички через навчання, власні проєкти й постійну практику. Я вже готовий починати, розвиватися далі в Ausbildung або на стартовій технічній позиції, приносити користь команді та швидко зростати і професійно, і мовно.",
         photoAlt: "Фото Антона Лиштви",
         contacts: [
           { label: "Дата народження", value: "30.08.2006" },
-          { label: "Адреса", value: "Am Jödebrunnen 3, 38118 Braunschweig" },
+          { label: "Адреса", value: "Am Jodebrunnen 3, 38118 Braunschweig" },
           { label: "Готовність", value: "можу починати відразу" },
           { label: "Телефон DE", value: "+49 1520 5379547", href: "tel:+4915205379547" },
           { label: "Телефон UA", value: "+380 95 723 4102", href: "tel:+380957234102" },
@@ -355,7 +453,7 @@ window.resumeData = {
         ]
       },
       highlights: [
-        { value: "14", label: "публічних GitHub-репозиторіїв" },
+        { value: "Braunschweig", label: "поточний локаційний базис у Німеччині" },
         { value: "Зараз", label: "готовий почати Ausbildung або стартову роботу" },
         { value: "Deutsch A2", label: "офіційно A2, B1 планую складати найближчим часом" },
         { value: "React + .NET", label: "найсильніші практичні напрями" }
@@ -363,15 +461,15 @@ window.resumeData = {
       languages: [
         "Українська - рідна",
         "Російська - C1",
-        "Німецька - офіційно A2, найближчим часом складаю B1, активно вивчаю далі"
+        "Німецька - офіційно A2, B1 планую складати, активно вивчаю далі"
       ],
       strengths: [
         "Відповідальність",
         "Командна робота",
         "Аналітичне мислення",
-        "Креативне розв'язання задач",
+        "Структуроване розв'язання задач",
         "Увага до деталей",
-        "Вміння пояснювати та ділитися знаннями"
+        "Вміння ясно пояснювати й ділитися знаннями"
       ],
       interests: [
         "Програмування",
@@ -405,8 +503,8 @@ window.resumeData = {
           text:
             "Завершена повна загальна середня освіта. Свідоцтво та додаток із предметами є в наявності й можуть бути надані за запитом.",
           bullets: [
-            "Дата свідоцтва: 14.06.2024.",
-            "Заклад указаний відповідно до офіційного документа."
+            "Офіційна назва закладу залишена відповідно до документа.",
+            "Дата свідоцтва: 14.06.2024."
           ]
         },
         {
@@ -414,7 +512,7 @@ window.resumeData = {
           subtitle: "Позашкільна мистецька освіта, акордеон",
           period: "09/2015 - 05/2022",
           text:
-            "Завершена музична освіта за напрямом акордеон. Свідоцтво та додаток наявні й можуть бути показані за запитом, без публікації на сайті.",
+            "Завершена музична освіта за напрямом акордеон. Свідоцтво та додаток є в наявності й можуть бути показані за запитом, без публікації на сайті.",
           bullets: [
             "Фаховий напрям: акордеон.",
             "Дало дисципліну, сценічний досвід і довгий фокус на навчанні."
@@ -492,8 +590,90 @@ window.resumeData = {
           items: ["Git", "GitHub", "UML", "Design Patterns", "Командна робота", "CI/CD база"]
         }
       ],
+      shortCv: {
+        pageTitle: "Антон Лиштва | Коротке CV",
+        pageDescription:
+          "Коротке односторінкове CV Антона Лиштви для Ausbildung або стартових технічних ролей у Німеччині.",
+        toolbarTitle: "Коротке CV | One-Page",
+        eyebrow: "Коротке CV",
+        title: "Junior Software Developer / Ausbildung або старт",
+        summary:
+          "Я з України, зараз живу в Німеччині, активно інтегруюся та розвиваюся в програмуванні. Основні практичні напрями: React, ASP.NET Core та продуктні вебзастосунки. Можу починати відразу.",
+        availability: "Braunschweig, Німеччина · можу починати відразу",
+        contactsLabel: "Контакти",
+        profileLabel: "Профіль",
+        projectsLabel: "Ключові проєкти",
+        skillsLabel: "Ключовий стек",
+        educationLabel: "Освіта",
+        languagesLabel: "Мови",
+        contacts: [
+          { label: "Локація", value: "Braunschweig, Німеччина" },
+          { label: "Старт", value: "можу починати відразу" },
+          { label: "Телефон", value: "+49 1520 5379547", href: "tel:+4915205379547" },
+          { label: "Е-пошта", value: "antonlistva47@gmail.com", href: "mailto:antonlistva47@gmail.com" },
+          { label: "GitHub", value: "github.com/anton5267", href: "https://github.com/anton5267" }
+        ],
+        highlights: [
+          { value: "React + .NET", label: "практичний фокус" },
+          { value: "Deutsch A2", label: "B1 найближчим часом" },
+          { value: "GitHub", label: "власні та командні проєкти" }
+        ],
+        profilePoints: [
+          "Зараз живу в Німеччині та активно тут інтегруюся.",
+          "Послідовно вивчаю німецьку й шукаю реальний старт через Ausbildung або junior-роль із живими завданнями розробки."
+        ],
+        projects: [
+          {
+            title: "Boardly",
+            subtitle: "Kanban-платформа на Django, React, TypeScript і PostgreSQL",
+            text: "Командний проєкт для керування задачами з ролями та realtime-оновленнями."
+          },
+          {
+            title: "Chess-master55",
+            subtitle: "ASP.NET Core MVC, SignalR, EF Core, Azure",
+            text: "Власна мультиплеєрна шахова платформа з realtime-комунікацією та публічним демо."
+          }
+        ],
+        skills: [
+          {
+            title: "Мови",
+            items: ["C++", "C#", "Python", "JavaScript", "TypeScript"]
+          },
+          {
+            title: "Фреймворки",
+            items: ["React", "ASP.NET Core", "EF Core", "Django REST Framework"]
+          },
+          {
+            title: "Інструменти",
+            items: ["Git", "Docker", "PostgreSQL", "Azure", "Kubernetes база"]
+          }
+        ],
+        education: [
+          {
+            title: "IT Step Academy",
+            period: "2021 - 2026",
+            text: "Розробка ПЗ, Київ · дипломна оцінка 11."
+          },
+          {
+            title: "Школа 2024 + музична",
+            period: "2015 - 2024",
+            text: "Повна середня освіта 2024, акордеон у музичній школі до 2022."
+          }
+        ],
+        languages: [
+          "Українська - рідна",
+          "Російська - C1",
+          "Німецька - A2, B1 планую складати"
+        ],
+        printEducation:
+          "Освіта: IT Step Academy, розробка ПЗ (2021 - 2026, дипломна оцінка 11), а також повна середня освіта 2024 і музична школа по акордеону до 2022.",
+        footerNoteHtml:
+          "Повне резюме, сторінка диплома та шаблон Anschreiben доступні через навігацію. Ця сторінка спеціально зібрана як коротка друкована версія."
+      },
       diploma: {
         pageTitle: "Антон Лиштва | Диплом",
+        pageDescription:
+          "Диплом і додатки IT Step Academy Антона Лиштви з вбудованими PDF та офіційною онлайн-перевіркою.",
         toolbarTitle: "Диплом і додатки",
         eyebrow: "Диплом",
         title: "Диплом та додатки",

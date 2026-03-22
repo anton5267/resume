@@ -11,6 +11,13 @@ function setText(id, value) {
   }
 }
 
+function setHtml(id, value) {
+  const node = byId(id);
+  if (node) {
+    node.innerHTML = value || "";
+  }
+}
+
 function createChip(text) {
   const chip = document.createElement("span");
   chip.className = "chip";
@@ -262,16 +269,67 @@ function setupPhotoAndMonogram(name, photoAlt) {
   }
 }
 
+function absolutePageUrl(path) {
+  const normalizedBase = appData.site.baseUrl.endsWith("/")
+    ? appData.site.baseUrl
+    : `${appData.site.baseUrl}/`;
+  return new URL(path || "", normalizedBase).toString();
+}
+
+function updateSeo(title, description, path, language) {
+  document.title = title;
+  document.documentElement.lang = language;
+
+  const canonical = byId("canonicalLink");
+  const metaDescription = byId("metaDescription");
+  const ogTitle = byId("ogTitle");
+  const ogDescription = byId("ogDescription");
+  const ogUrl = byId("ogUrl");
+  const ogImage = byId("ogImage");
+  const twitterTitle = byId("twitterTitle");
+  const twitterDescription = byId("twitterDescription");
+  const twitterImage = byId("twitterImage");
+  const pageUrl = absolutePageUrl(path);
+
+  if (canonical) {
+    canonical.href = pageUrl;
+  }
+  if (metaDescription) {
+    metaDescription.content = description;
+  }
+  if (ogTitle) {
+    ogTitle.content = title;
+  }
+  if (ogDescription) {
+    ogDescription.content = description;
+  }
+  if (ogUrl) {
+    ogUrl.content = pageUrl;
+  }
+  if (ogImage) {
+    ogImage.content = appData.site.socialImage;
+  }
+  if (twitterTitle) {
+    twitterTitle.content = title;
+  }
+  if (twitterDescription) {
+    twitterDescription.content = description;
+  }
+  if (twitterImage) {
+    twitterImage.content = appData.site.socialImage;
+  }
+}
+
 function applyLanguage(language) {
   const translation = appData.translations[language] || appData.translations[appData.settings.defaultLanguage];
   const { meta, basics } = translation;
 
-  document.documentElement.lang = meta.htmlLang || language;
-  document.title = meta.pageTitle;
+  updateSeo(meta.pageTitle, meta.pageDescription, "", meta.htmlLang || language);
 
   setText("toolbarEyebrow", meta.toolbarEyebrow);
   setText("toolbarTitle", meta.toolbarTitle);
   setText("navResume", meta.navResume);
+  setText("navShortCv", meta.navShortCv);
   setText("navDiploma", meta.navDiploma);
   setText("labelContact", meta.sidebarContact);
   setText("labelLanguages", meta.sidebarLanguages);
@@ -292,6 +350,7 @@ function applyLanguage(language) {
   setText("summary", basics.summary);
   setText("objective", basics.objective);
   setText("sidebarRole", basics.sidebarRole);
+  setHtml("footerNoteText", meta.footerNoteHtml);
 
   renderList("contacts", basics.contacts, createContactItem);
   renderSimpleList("languages", translation.languages);
