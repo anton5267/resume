@@ -28,11 +28,11 @@ window.resumeData = {
     de: {
       meta: {
         htmlLang: "de",
-        pageTitle: "Anton Lyshtva | Junior Software Developer",
+        pageTitle: "Anton Lyshtva | IT-Ausbildung / Softwareentwicklung",
         pageDescription:
-          "Bilingualer Lebenslauf von Anton Lyshtva fur Ausbildung oder Junior-Positionen in Deutschland.",
+          "Bilingualer Lebenslauf von Anton Lyshtva fur IT-Ausbildung, Praktikum oder technische Einstiegswege in Deutschland.",
         toolbarEyebrow: "Resume / Website / PDF",
-        toolbarTitle: "Junior Software Developer | Deutschland",
+        toolbarTitle: "IT-Ausbildung | Softwareentwicklung",
         navResume: "Lebenslauf",
         navShortCv: "Kurzprofil",
         navDiploma: "Diplom",
@@ -56,34 +56,33 @@ window.resumeData = {
       basics: {
         eyebrow: "Lebenslauf",
         name: "Anton Lyshtva",
-        title: "Junior Software Developer / Ausbildung oder Berufseinstieg",
+        title: "Bewerber für IT-Ausbildung / Softwareentwicklung",
         sidebarRole:
-          "Junior Software Developer mit Fokus auf Webentwicklung, .NET, produktnahe Projekte und einen schnellen praktischen Einstieg.",
+          "Motivierter Bewerber für eine IT-Ausbildung mit Fokus auf Anwendungsentwicklung, Webentwicklung und soliden IT-Grundlagen.",
         summary:
-          "Junior Software Developer mit Praxis in Python, C++, C#, JavaScript, TypeScript, React und ASP.NET Core. In Ausbildung, eigenen GitHub-Projekten und kontinuierlichem Selbststudium habe ich Webanwendungen, Echtzeitfunktionen, PWAs und cloud-nahe Deployments umgesetzt.",
+          "Bewerber für Ausbildungsplätze im IT-Bereich mit Praxis in Python, C++, C#, JavaScript, TypeScript, React und ASP.NET Core. Durch die IT Step Academy, eigene GitHub-Projekte und Teamarbeit habe ich Grundlagen in Softwareentwicklung, Webanwendungen, Datenbanken, Echtzeitfunktionen und Qualitätssicherung aufgebaut.",
         objective:
-          "Ich komme aus der Ukraine und lebe aktuell in Deutschland. Hier integriere ich mich aktiv, lerne Deutsch weiter und baue meine technischen Fahigkeiten durch Ausbildung, eigene Projekte und kontinuierliches Selbststudium aus. Ich bin ab sofort bereit, meine Kenntnisse in einer Ausbildung oder Junior-Position einzubringen, schnell Verantwortung zu ubernehmen und mich im Team fachlich wie sprachlich weiterzuentwickeln.",
+          "Ich komme aus der Ukraine und lebe aktuell in Deutschland. Ich suche einen Ausbildungsplatz ab 2026 im IT-Bereich, besonders in der Anwendungsentwicklung, und bin auch offen für Systemintegration oder Digitalisierungsmanagement. Ein Praktikum oder eine Einstiegsqualifizierung kann ich ab sofort beginnen. Deutsch lerne ich aktiv weiter und möchte mich im Team fachlich wie sprachlich entwickeln.",
         photoAlt: "Foto von Anton Lyshtva",
         contacts: [
           { label: "Geburtsdatum", value: "30.08.2006" },
-          { label: "Adresse", value: "Am Jodebrunnen 3, 38118 Braunschweig" },
-          { label: "Verfugbarkeit", value: "ab sofort verfugbar" },
-          { label: "Telefon DE", value: "+49 1520 5379547", href: "tel:+4915205379547" },
-          { label: "Telefon UA", value: "+380 95 723 4102", href: "tel:+380957234102" },
+          { label: "Adresse", value: "Am Jödebrunnen 3, 38118 Braunschweig" },
+          { label: "Verfügbarkeit", value: "Praktikum/EQ ab sofort, Ausbildung ab 2026" },
+          { label: "Telefon", value: "+49 1520 5379547", href: "tel:+4915205379547" },
           { label: "E-Mail", value: "antonlistva47@gmail.com", href: "mailto:antonlistva47@gmail.com" },
           { label: "GitHub", value: "github.com/anton5267", href: "https://github.com/anton5267" }
         ]
       },
       highlights: [
         { value: "Braunschweig", label: "aktueller Standort in Deutschland" },
-        { value: "Ab sofort", label: "bereit fur Ausbildung oder Einstieg" },
-        { value: "Deutsch A2", label: "B1-Prufung geplant, lerne aktiv weiter" },
-        { value: "React + .NET", label: "starkste Praxisfelder" }
+        { value: "Ausbildung 2026", label: "Fokus: IT und Softwareentwicklung" },
+        { value: "Deutsch A2", label: "B1-Prüfung abgelegt, Ergebnis ausstehend" },
+        { value: "React + .NET", label: "stärkste Praxisfelder" }
       ],
       languages: [
         "Ukrainisch - Muttersprache",
         "Russisch - C1",
-        "Deutsch - offiziell A2, B1-Prufung geplant, lerne aktiv weiter"
+        "Deutsch - offiziell A2, B1-Prüfung abgelegt, Ergebnis ausstehend"
       ],
       strengths: [
         "Verantwortungsbewusstsein",
@@ -110,7 +109,7 @@ window.resumeData = {
             "Fachliche Ausbildung im Bereich Softwareentwicklung mit Abschlussnote 11 (Excellent). Schwerpunkt auf moderner Webentwicklung, objektorientierter Programmierung und Cloud-/Container-Technologien.",
           bullets: [
             "Wichtige Module: C++, C#, Python, JavaScript, React, ASP.NET Core, EF Core und MS SQL Server.",
-            "Weitere Themen: Docker, Kubernetes, Microsoft Azure, Blockchain, UML und Team Project Management.",
+            "Weitere Themen: Docker, Microsoft Azure, Blockchain, UML, Design Patterns und Team Project Management.",
             "Praxisnahe Teamprojekte in Web Development, .NET und React Native."
           ],
           link: {
@@ -147,11 +146,11 @@ window.resumeData = {
           subtitle: "Kollaborative Kanban-Plattform, Trello-ahnlich",
           period: "GitHub Teamprojekt",
           text:
-            "Webanwendung fur Aufgaben- und Board-Management mit Rollen, Drag-and-Drop-Karten, Profilfunktionen und Echtzeit-Updates.",
+            "Webanwendung für Aufgaben- und Board-Management mit Rollen, Drag-and-Drop-Karten, Profilfunktionen und Echtzeit-Updates. Das Projekt zeigt Teamarbeit, Backend-/Frontend-Verständnis und strukturierte Umsetzung.",
           bullets: [
             "Backend mit Python, Django, Django REST Framework, Channels, Djoser und PostgreSQL.",
             "Frontend mit React, TypeScript, Redux Toolkit, React Router und Axios.",
-            "Docker-Setup, GitHub Actions und testbare Projektstruktur fur Teamarbeit."
+            "Docker-Setup, GitHub Actions und testbare Projektstruktur für gemeinsame Entwicklung."
           ],
           tags: ["Python", "Django", "DRF", "React", "TypeScript", "PostgreSQL", "Docker"],
           link: {
@@ -164,11 +163,11 @@ window.resumeData = {
           subtitle: "Multiplayer Chess Platform",
           period: "Eigenes GitHub-Projekt",
           text:
-            "Moderne Schachplattform mit Mehrspieler-Modus, Bot-Spiel und funfsprachiger Benutzeroberflache.",
+            "Moderne Schachplattform mit Mehrspieler-Modus, Bot-Spiel und fünfsprachiger Benutzeroberfläche. Das Projekt zeigt Full-Stack-Denken, Echtzeitlogik und Arbeit mit einer öffentlich erreichbaren Demo.",
           bullets: [
-            "Aufgebaut mit ASP.NET Core MVC, C#, Entity Framework Core und SignalR fur Echtzeitkommunikation.",
-            "Deployment uber Azure Web App mit offentlicher Demo.",
-            "Zeigt Praxis in Full-Stack-.NET, UI-Struktur und interaktiver Benutzerlogik."
+            "Aufgebaut mit ASP.NET Core MVC, C#, Entity Framework Core und SignalR für Echtzeitkommunikation.",
+            "Deployment über Azure Web App mit öffentlicher Demo.",
+            "Nützlich als Nachweis für C#/.NET, UI-Struktur und interaktive Benutzerlogik."
           ],
           tags: ["ASP.NET Core MVC", "C#", "SignalR", "EF Core", "Azure"],
           link: {
@@ -181,11 +180,11 @@ window.resumeData = {
           subtitle: "Interaktive PWA fur Lern- und Prufungsszenarien",
           period: "Eigenes GitHub-Projekt",
           text:
-            "Statischer, produktionsnah strukturierter Lernclient mit Theorie, Quiz, Prufungsmodus, Analytik und Offline-Unterstutzung.",
+            "Statischer, produktionsnah strukturierter Lernclient mit Theorie, Quiz, Prüfungsmodus, Analytik und Offline-Unterstützung. Das Projekt zeigt QA-Denken, Benutzerorientierung und saubere Struktur.",
           bullets: [
             "JavaScript-App mit mehrsprachigem Content, Import/Export, Service Worker und GitHub Pages Deployment.",
             "Enthalt Quality- und Security-Workflows inklusive Accessibility-, Smoke- und Visual-Regression-Checks.",
-            "Demonstriert saubere Projektstruktur, QA-Denken und Fokus auf reale Nutzbarkeit."
+            "Demonstriert eigenständige Umsetzung, Dokumentation und Fokus auf reale Nutzbarkeit."
           ],
           tags: ["JavaScript", "PWA", "GitHub Pages", "CI", "Accessibility", "Offline"],
           link: {
@@ -196,32 +195,32 @@ window.resumeData = {
       ],
       skills: [
         {
-          title: "Programmiersprachen",
+          title: "Softwareentwicklung",
           items: ["C++", "C#", "Python", "JavaScript", "TypeScript"]
         },
         {
-          title: "Web und Frameworks",
-          items: ["React", "ASP.NET Core", "WPF", "EF Core", "Django REST Framework"]
+          title: "Web",
+          items: ["React", "ASP.NET Core", "Django REST Framework", "HTML/CSS", "PWA-Basis"]
         },
         {
-          title: "Datenbanken und Cloud",
-          items: ["MS SQL Server", "PostgreSQL", "Docker", "Kubernetes", "Microsoft Azure"]
+          title: "Datenbanken",
+          items: ["MS SQL Server", "PostgreSQL", "EF Core", "Dapper", "SQL-Grundlagen"]
         },
         {
-          title: "Arbeitsweise und Tools",
-          items: ["Git", "GitHub", "UML", "Design Patterns", "Teamarbeit", "CI/CD-Basis"]
+          title: "Tools und IT-Grundlagen",
+          items: ["Git", "GitHub", "Docker-Basis", "Azure-Basis", "UML", "Teamarbeit"]
         }
       ],
       shortCv: {
         pageTitle: "Anton Lyshtva | Kurzprofil",
         pageDescription:
-          "Kompakte Ein-Seiten-Bewerbung von Anton Lyshtva fur Ausbildung oder Junior-Positionen in Deutschland.",
+          "Kompakte Ein-Seiten-Bewerbung von Anton Lyshtva fur IT-Ausbildung, Praktikum oder Einstiegsqualifizierung in Deutschland.",
         toolbarTitle: "Kurzprofil | One-Page CV",
         eyebrow: "Kurzprofil",
-        title: "Junior Software Developer / Ausbildung oder Einstieg",
+        title: "Bewerber für IT-Ausbildung / Softwareentwicklung",
         summary:
-          "Aus der Ukraine, aktuell in Deutschland, technisch fokussiert auf React, ASP.NET Core und produktnahe Webanwendungen. Ab sofort verfugbar und bereit fur einen schnellen fachlichen Einstieg.",
-        availability: "Braunschweig, Deutschland · ab sofort verfugbar",
+          "Aus der Ukraine, aktuell in Deutschland, mit IT Step Abschluss in Softwareentwicklung und eigenen GitHub-Projekten. Fokus: Ausbildung 2026 in Anwendungsentwicklung; offen für Systemintegration oder Digitalisierungsmanagement.",
+        availability: "Braunschweig, Deutschland · Praktikum/EQ ab sofort, Ausbildung ab 2026",
         contactsLabel: "Kontakt",
         profileLabel: "Profil",
         projectsLabel: "Top-Projekte",
@@ -230,44 +229,44 @@ window.resumeData = {
         languagesLabel: "Sprachen",
         contacts: [
           { label: "Standort", value: "Braunschweig, Deutschland" },
-          { label: "Start", value: "ab sofort verfugbar" },
+          { label: "Start", value: "Praktikum/EQ ab sofort, Ausbildung ab 2026" },
           { label: "Telefon", value: "+49 1520 5379547", href: "tel:+4915205379547" },
           { label: "E-Mail", value: "antonlistva47@gmail.com", href: "mailto:antonlistva47@gmail.com" },
           { label: "GitHub", value: "github.com/anton5267", href: "https://github.com/anton5267" }
         ],
         highlights: [
-          { value: "React + .NET", label: "praktischer Schwerpunkt" },
-          { value: "Deutsch A2", label: "B1-Prufung geplant" },
+          { value: "Ausbildung 2026", label: "IT und Softwareentwicklung" },
+          { value: "Deutsch A2", label: "B1-Prüfung abgelegt" },
           { value: "GitHub", label: "eigene Projekte und Teamarbeit" }
         ],
         profilePoints: [
           "Ich lebe aktuell in Deutschland und integriere mich hier aktiv.",
-          "Deutsch lerne ich konsequent weiter und suche bewusst einen Einstieg uber Ausbildung oder Junior-Rolle mit realen Entwicklungsaufgaben."
+          "Deutsch lerne ich konsequent weiter und suche bewusst einen Ausbildungsplatz mit realen IT- und Entwicklungsaufgaben."
         ],
         projects: [
           {
             title: "Boardly",
-            subtitle: "Kanban-Plattform mit Django, React, TypeScript und PostgreSQL",
-            text: "Teamprojekt fur Aufgabenmanagement mit Rollen und Echtzeit-Updates."
+            subtitle: "Django, React, TypeScript, PostgreSQL",
+            text: "Teamprojekt für Aufgabenmanagement mit Rollen, Boards und Echtzeit-Updates."
           },
           {
             title: "Chess-master55",
             subtitle: "ASP.NET Core MVC, SignalR, EF Core, Azure",
-            text: "Eigene Multiplayer-Schachplattform mit Echtzeitkommunikation und offentlicher Demo."
+            text: "Eigenes Projekt mit Echtzeitkommunikation, Datenbankanbindung und öffentlicher Demo."
           }
         ],
         skills: [
           {
-            title: "Sprachen",
+            title: "Software",
             items: ["C++", "C#", "Python", "JavaScript", "TypeScript"]
           },
           {
-            title: "Frameworks",
-            items: ["React", "ASP.NET Core", "EF Core", "Django REST Framework"]
+            title: "Web",
+            items: ["React", "ASP.NET Core", "Django REST Framework", "HTML/CSS"]
           },
           {
-            title: "Tools",
-            items: ["Git", "Docker", "PostgreSQL", "Azure", "Kubernetes-Basis"]
+            title: "Tools/IT",
+            items: ["Git", "Docker-Basis", "PostgreSQL", "Azure-Basis", "UML"]
           }
         ],
         education: [
@@ -285,7 +284,7 @@ window.resumeData = {
         languages: [
           "Ukrainisch - Muttersprache",
           "Russisch - C1",
-          "Deutsch - A2, B1-Prufung geplant"
+          "Deutsch - A2, B1-Prüfung abgelegt, Ergebnis ausstehend"
         ],
         printEducation:
           "Bildung: IT Step Academy, Software Development (2021 - 2026, Abschlussnote 11) sowie Schulabschluss 2024 und Musikschule Akkordeon bis 2022.",
@@ -406,11 +405,11 @@ window.resumeData = {
     uk: {
       meta: {
         htmlLang: "uk",
-        pageTitle: "Антон Лиштва | Junior Software Developer",
+        pageTitle: "Антон Лиштва | IT-Ausbildung / Softwareentwicklung",
         pageDescription:
           "Двомовне резюме Антона Лиштви для Ausbildung або стартових технічних ролей у Німеччині.",
         toolbarEyebrow: "Resume / Website / PDF",
-        toolbarTitle: "Junior Software Developer | Німеччина",
+        toolbarTitle: "IT-Ausbildung | Softwareentwicklung",
         navResume: "Резюме",
         navShortCv: "Коротке CV",
         navDiploma: "Диплом",
@@ -434,34 +433,33 @@ window.resumeData = {
       basics: {
         eyebrow: "Резюме",
         name: "Антон Лиштва",
-        title: "Junior Software Developer / Ausbildung або старт роботи",
+        title: "Кандидат на IT-Ausbildung / Softwareentwicklung",
         sidebarRole:
-          "Junior Software Developer із фокусом на web development, .NET, власні продуктні проєкти та швидкий практичний старт.",
+          "Мотивований кандидат на IT-Ausbildung з фокусом на Anwendungsentwicklung, web development і базові IT-навички.",
         summary:
-          "Junior-розробник із практичним досвідом у Python, C++, C#, JavaScript, TypeScript, React та ASP.NET Core. Через навчання, власні GitHub-проєкти та постійне самонавчання я реалізовував вебзастосунки, realtime-функціонал, PWA та cloud-ready деплой.",
+          "Кандидат на Ausbildung в IT-напрямі з практикою в Python, C++, C#, JavaScript, TypeScript, React та ASP.NET Core. Через IT Step Academy, власні GitHub-проєкти й командну роботу я отримав базу в software development, web applications, databases, realtime-функціях і quality workflows.",
         objective:
-          "Я з України і зараз проживаю в Німеччині. Тут я поступово інтегруюся, активно вивчаю німецьку мову та паралельно розвиваю технічні навички через навчання, власні проєкти й постійну практику. Я вже готовий починати, розвиватися далі в Ausbildung або на стартовій технічній позиції, приносити користь команді та швидко зростати і професійно, і мовно.",
+          "Я з України і зараз проживаю в Німеччині. Шукаю Ausbildung ab 2026 в IT-напрямі, особливо Anwendungsentwicklung, і також відкритий до Systemintegration або Digitalisierungsmanagement. Praktikum або Einstiegsqualifizierung можу почати вже зараз. Німецьку вивчаю активно й хочу розвиватися в команді професійно та мовно.",
         photoAlt: "Фото Антона Лиштви",
         contacts: [
           { label: "Дата народження", value: "30.08.2006" },
-          { label: "Адреса", value: "Am Jodebrunnen 3, 38118 Braunschweig" },
-          { label: "Готовність", value: "можу починати відразу" },
-          { label: "Телефон DE", value: "+49 1520 5379547", href: "tel:+4915205379547" },
-          { label: "Телефон UA", value: "+380 95 723 4102", href: "tel:+380957234102" },
+          { label: "Адреса", value: "Am Jödebrunnen 3, 38118 Braunschweig" },
+          { label: "Готовність", value: "Praktikum/EQ відразу, Ausbildung ab 2026" },
+          { label: "Телефон", value: "+49 1520 5379547", href: "tel:+4915205379547" },
           { label: "Е-пошта", value: "antonlistva47@gmail.com", href: "mailto:antonlistva47@gmail.com" },
           { label: "GitHub", value: "github.com/anton5267", href: "https://github.com/anton5267" }
         ]
       },
       highlights: [
         { value: "Braunschweig", label: "поточний локаційний базис у Німеччині" },
-        { value: "Зараз", label: "готовий почати Ausbildung або стартову роботу" },
-        { value: "Deutsch A2", label: "офіційно A2, B1 планую складати найближчим часом" },
+        { value: "Ausbildung 2026", label: "фокус: IT та software development" },
+        { value: "Deutsch A2", label: "B1-Prüfung складена, результат очікується" },
         { value: "React + .NET", label: "найсильніші практичні напрями" }
       ],
       languages: [
         "Українська - рідна",
         "Російська - C1",
-        "Німецька - офіційно A2, B1 планую складати, активно вивчаю далі"
+        "Німецька - офіційно A2, B1-Prüfung складена, результат очікується"
       ],
       strengths: [
         "Відповідальність",
@@ -488,7 +486,7 @@ window.resumeData = {
             "Профільна освіта у сфері розробки ПЗ з дипломною оцінкою 11 (відмінно). Основний фокус: сучасна веброзробка, об'єктно-орієнтоване програмування та cloud/container технології.",
           bullets: [
             "Ключові модулі: C++, C#, Python, JavaScript, React, ASP.NET Core, EF Core та MS SQL Server.",
-            "Додатково: Docker, Kubernetes, Microsoft Azure, Blockchain, UML і Team Project Management.",
+            "Додатково: Docker, Microsoft Azure, Blockchain, UML, Design Patterns і Team Project Management.",
             "Практичні командні проєкти з Web Development, .NET і React Native."
           ],
           link: {
@@ -525,11 +523,11 @@ window.resumeData = {
           subtitle: "Колаборативна Kanban-платформа, аналог Trello",
           period: "Командний GitHub-проєкт",
           text:
-            "Вебзастосунок для керування завданнями та дошками з ролями, drag-and-drop-картками, профілями користувачів та realtime-оновленнями.",
+            "Вебзастосунок для керування завданнями та дошками з ролями, drag-and-drop-картками, профілями користувачів та realtime-оновленнями. Проєкт показує командну роботу, розуміння backend/frontend і структуровану реалізацію.",
           bullets: [
             "Бекенд на Python, Django, Django REST Framework, Channels, Djoser і PostgreSQL.",
             "Фронтенд на React, TypeScript, Redux Toolkit, React Router та Axios.",
-            "Docker-оточення, GitHub Actions і структура, придатна для командної розробки."
+            "Docker-оточення, GitHub Actions і структура, придатна для спільної розробки."
           ],
           tags: ["Python", "Django", "DRF", "React", "TypeScript", "PostgreSQL", "Docker"],
           link: {
@@ -542,11 +540,11 @@ window.resumeData = {
           subtitle: "Мультиплеєрна шахова платформа",
           period: "Власний GitHub-проєкт",
           text:
-            "Сучасна шахова платформа з мультиплеєром, грою проти бота та п'ятимовним інтерфейсом.",
+            "Сучасна шахова платформа з мультиплеєром, грою проти бота та п'ятимовним інтерфейсом. Проєкт показує full-stack мислення, realtime-логіку та роботу з публічною демо-версією.",
           bullets: [
             "Побудована на ASP.NET Core MVC, C#, Entity Framework Core та SignalR для realtime-комунікації.",
             "Задеплоєна в Azure Web App з публічною демо-версією.",
-            "Показує практику у Full-Stack .NET, UI-структурі та інтерактивній логіці."
+            "Корисний як підтвердження практики в C#/.NET, UI-структурі та інтерактивній логіці."
           ],
           tags: ["ASP.NET Core MVC", "C#", "SignalR", "EF Core", "Azure"],
           link: {
@@ -559,11 +557,11 @@ window.resumeData = {
           subtitle: "Інтерактивна PWA для навчання та підготовки",
           period: "Власний GitHub-проєкт",
           text:
-            "Статичний, але production-ready навчальний клієнт з теорією, квізами, іспитовим режимом, аналітикою та офлайн-підтримкою.",
+            "Статичний, але production-ready навчальний клієнт з теорією, квізами, іспитовим режимом, аналітикою та офлайн-підтримкою. Проєкт показує QA-мислення, орієнтацію на користувача та чисту структуру.",
           bullets: [
             "JavaScript-застосунок з багатомовним контентом, import/export, service worker і GitHub Pages деплоєм.",
             "Має quality та security workflow, включно з accessibility-, smoke- та visual-regression-перевірками.",
-            "Демонструє чисту структуру проєкту, QA-мислення і фокус на реальній корисності."
+            "Демонструє самостійну реалізацію, документацію і фокус на реальній корисності."
           ],
           tags: ["JavaScript", "PWA", "GitHub Pages", "CI", "Accessibility", "Offline"],
           link: {
@@ -574,20 +572,20 @@ window.resumeData = {
       ],
       skills: [
         {
-          title: "Мови програмування",
+          title: "Softwareentwicklung",
           items: ["C++", "C#", "Python", "JavaScript", "TypeScript"]
         },
         {
-          title: "Веб і фреймворки",
-          items: ["React", "ASP.NET Core", "WPF", "EF Core", "Django REST Framework"]
+          title: "Web",
+          items: ["React", "ASP.NET Core", "Django REST Framework", "HTML/CSS", "PWA-база"]
         },
         {
-          title: "Бази даних і cloud",
-          items: ["MS SQL Server", "PostgreSQL", "Docker", "Kubernetes", "Microsoft Azure"]
+          title: "Бази даних",
+          items: ["MS SQL Server", "PostgreSQL", "EF Core", "Dapper", "SQL-база"]
         },
         {
-          title: "Інструменти та підхід",
-          items: ["Git", "GitHub", "UML", "Design Patterns", "Командна робота", "CI/CD база"]
+          title: "Tools та IT-Grundlagen",
+          items: ["Git", "GitHub", "Docker-база", "Azure-база", "UML", "Командна робота"]
         }
       ],
       shortCv: {
@@ -596,10 +594,10 @@ window.resumeData = {
           "Коротке односторінкове CV Антона Лиштви для Ausbildung або стартових технічних ролей у Німеччині.",
         toolbarTitle: "Коротке CV | One-Page",
         eyebrow: "Коротке CV",
-        title: "Junior Software Developer / Ausbildung або старт",
+        title: "Кандидат на IT-Ausbildung / Softwareentwicklung",
         summary:
-          "Я з України, зараз живу в Німеччині, активно інтегруюся та розвиваюся в програмуванні. Основні практичні напрями: React, ASP.NET Core та продуктні вебзастосунки. Можу починати відразу.",
-        availability: "Braunschweig, Німеччина · можу починати відразу",
+          "Я з України, зараз живу в Німеччині, маю IT Step Abschluss у Softwareentwicklung і власні GitHub-проєкти. Фокус: Ausbildung 2026 в Anwendungsentwicklung; відкритий до Systemintegration або Digitalisierungsmanagement.",
+        availability: "Braunschweig, Німеччина · Praktikum/EQ відразу, Ausbildung ab 2026",
         contactsLabel: "Контакти",
         profileLabel: "Профіль",
         projectsLabel: "Ключові проєкти",
@@ -608,44 +606,44 @@ window.resumeData = {
         languagesLabel: "Мови",
         contacts: [
           { label: "Локація", value: "Braunschweig, Німеччина" },
-          { label: "Старт", value: "можу починати відразу" },
+          { label: "Старт", value: "Praktikum/EQ відразу, Ausbildung ab 2026" },
           { label: "Телефон", value: "+49 1520 5379547", href: "tel:+4915205379547" },
           { label: "Е-пошта", value: "antonlistva47@gmail.com", href: "mailto:antonlistva47@gmail.com" },
           { label: "GitHub", value: "github.com/anton5267", href: "https://github.com/anton5267" }
         ],
         highlights: [
-          { value: "React + .NET", label: "практичний фокус" },
-          { value: "Deutsch A2", label: "B1 найближчим часом" },
+          { value: "Ausbildung 2026", label: "IT та software development" },
+          { value: "Deutsch A2", label: "B1-Prüfung складена" },
           { value: "GitHub", label: "власні та командні проєкти" }
         ],
         profilePoints: [
           "Зараз живу в Німеччині та активно тут інтегруюся.",
-          "Послідовно вивчаю німецьку й шукаю реальний старт через Ausbildung або junior-роль із живими завданнями розробки."
+          "Послідовно вивчаю німецьку й шукаю Ausbildungsplatz із реальними IT- та development-завданнями."
         ],
         projects: [
           {
             title: "Boardly",
-            subtitle: "Kanban-платформа на Django, React, TypeScript і PostgreSQL",
-            text: "Командний проєкт для керування задачами з ролями та realtime-оновленнями."
+            subtitle: "Django, React, TypeScript, PostgreSQL",
+            text: "Командний проєкт для керування задачами з ролями, дошками та realtime-оновленнями."
           },
           {
             title: "Chess-master55",
             subtitle: "ASP.NET Core MVC, SignalR, EF Core, Azure",
-            text: "Власна мультиплеєрна шахова платформа з realtime-комунікацією та публічним демо."
+            text: "Власний проєкт із realtime-комунікацією, базою даних і публічною демо-версією."
           }
         ],
         skills: [
           {
-            title: "Мови",
+            title: "Software",
             items: ["C++", "C#", "Python", "JavaScript", "TypeScript"]
           },
           {
-            title: "Фреймворки",
-            items: ["React", "ASP.NET Core", "EF Core", "Django REST Framework"]
+            title: "Web",
+            items: ["React", "ASP.NET Core", "Django REST Framework", "HTML/CSS"]
           },
           {
-            title: "Інструменти",
-            items: ["Git", "Docker", "PostgreSQL", "Azure", "Kubernetes база"]
+            title: "Tools/IT",
+            items: ["Git", "Docker-база", "PostgreSQL", "Azure-база", "UML"]
           }
         ],
         education: [
@@ -663,7 +661,7 @@ window.resumeData = {
         languages: [
           "Українська - рідна",
           "Російська - C1",
-          "Німецька - A2, B1 планую складати"
+          "Німецька - A2, B1-Prüfung складена, результат очікується"
         ],
         printEducation:
           "Освіта: IT Step Academy, розробка ПЗ (2021 - 2026, дипломна оцінка 11), а також повна середня освіта 2024 і музична школа по акордеону до 2022.",

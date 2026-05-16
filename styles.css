@@ -31,11 +31,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
   font-family: var(--font-body);
   color: var(--ink);
   background:
@@ -1900,6 +1902,16 @@ code {
     border-radius: 18px;
   }
 
+  .short-hero__copy,
+  .short-card,
+  .short-stack-item,
+  .short-tag-card,
+  .contact-item dd,
+  .hero-block__summary {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
   .short-timeline__top {
     flex-direction: column;
     align-items: flex-start;
@@ -2168,6 +2180,11 @@ code {
 
   .short-hero__copy .hero-block__title {
     font-size: 0.95rem;
+  }
+
+  .contact-list--compact .contact-item {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 
   .photo-card {

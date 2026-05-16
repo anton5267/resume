@@ -49,6 +49,18 @@ Production:
 
 `short-cv.html` зібраний як окрема коротка print-first версія.
 
+## Bewerbungs-Paket
+
+Для подач на Ausbildung основний файл:
+
+- `C:\Users\Legion\Downloads\Anton_Lyshtva_Resume_DE.pdf`
+
+Стабільний набір документів лежить у:
+
+- `C:\Users\Legion\Downloads\доку`
+
+У цій папці мають бути Lebenslauf, full CV, Zeugnis-переклад, IT Step Diplom/Nachweise, Deutsch-Zertifikat, шаблон Anschreiben і `Bewerbungs_Checkliste_Anton_Lyshtva.md`.
+
 ## Локальний запуск
 
 Можна просто відкрити `index.html` у браузері або підняти локальний сервер:
