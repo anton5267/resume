@@ -672,55 +672,10 @@ function updateLanguageButtons(language) {
   });
 }
 
-function setupPhotoAndMonogram(name, photoAlt) {
-  const photo = byId("profilePhoto");
-  const fallback = byId("photoFallback");
-  const initials = byId("photoInitials");
-  const heroMonogram = byId("heroMonogram");
-  const photoData = appData.assets.photo;
-  const monogram =
-    photoData?.initials ||
-    name
-      .split(" ")
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((part) => part[0])
-      .join("")
-      .toUpperCase() ||
-    "CV";
-
-  if (initials) {
-    initials.textContent = monogram;
-  }
-
-  if (heroMonogram) {
-    heroMonogram.textContent = monogram;
-  }
-
-  if (!photo || !photoData?.src) {
-    return;
-  }
-
-  photo.alt = photoAlt || "Profile photo";
-  photo.onload = () => {
-    photo.style.display = "block";
-    if (fallback) {
-      fallback.style.display = "none";
-    }
-  };
-  photo.onerror = () => {
-    photo.style.display = "none";
-    if (fallback) {
-      fallback.style.display = "grid";
-    }
-  };
-  if (photo.getAttribute("src") !== photoData.src) {
-    photo.src = photoData.src;
-  } else if (photo.complete && photo.naturalWidth > 0) {
-    photo.style.display = "block";
-    if (fallback) {
-      fallback.style.display = "none";
-    }
+function setupMonogram(name) {
+  const monogram = byId("heroMonogram");
+  if (monogram) {
+    monogram.textContent = appData.assets.initials || name.split(" ").filter(Boolean).slice(0, 2).map(part => part[0]).join("").toUpperCase();
   }
 }
 
@@ -740,10 +695,8 @@ function updateSeo(title, description, path, language) {
   const ogTitle = byId("ogTitle");
   const ogDescription = byId("ogDescription");
   const ogUrl = byId("ogUrl");
-  const ogImage = byId("ogImage");
   const twitterTitle = byId("twitterTitle");
   const twitterDescription = byId("twitterDescription");
-  const twitterImage = byId("twitterImage");
   const pageUrl = absolutePageUrl(path);
 
   if (canonical) {
@@ -761,17 +714,11 @@ function updateSeo(title, description, path, language) {
   if (ogUrl) {
     ogUrl.content = pageUrl;
   }
-  if (ogImage) {
-    ogImage.content = appData.site.socialImage;
-  }
   if (twitterTitle) {
     twitterTitle.content = title;
   }
   if (twitterDescription) {
     twitterDescription.content = description;
-  }
-  if (twitterImage) {
-    twitterImage.content = appData.site.socialImage;
   }
 }
 
@@ -829,7 +776,7 @@ function applyLanguage(language) {
     downloadPdf.textContent = meta.pdfButton;
   }
 
-  setupPhotoAndMonogram(basics.name, basics.photoAlt);
+  setupMonogram(basics.name);
   updateLanguageButtons(language);
 }
 

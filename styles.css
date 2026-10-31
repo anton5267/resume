@@ -2519,3 +2519,9 @@ code {
     color: #111d2a;
   }
 }
+
+/* Photo-free profile introductions. */
+.sidebar-intro { margin-bottom: 28px; }
+.sidebar-intro .sidebar__role { margin-top: 0; }
+.short-hero__aside { align-self: center; }
+@media print { .sidebar-intro { margin-bottom: 12px; } }

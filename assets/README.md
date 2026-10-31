@@ -1,7 +1,3 @@
-Place your portrait photo here as `profile-photo.jpg`.
+# Site assets
 
-The site already points to:
-
-`assets/profile-photo.jpg`
-
-If you prefer another filename, update `resume-data.js`.
+The site uses a photo-free layout. Diploma documents are stored in `diploma/` and referenced from `resume-data.js`.
